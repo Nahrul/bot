@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Advanced form elements</title>
+  <script src="https://unpkg.com/vue@3"></script>
+
+  
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="asset/plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="asset/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="asset/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="asset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="asset/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="asset/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="asset/plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="asset/plugins/dropzone/min/dropzone.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="asset/dist/css/adminlte.min.css">
+</head>
+<body id="app" class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="asset/index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="asset/index3.html" class="brand-link">
+      <img src="asset/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="asset/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Forms
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/advanced.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Advanced Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/editors.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Editors</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/validation.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Validation</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Form Laporan BMT</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">{{ petugas}}</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">General</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Date:</label>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        <input type="text" v-model="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Shift</label>
+                  <select  v-model="shift" class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Shift 1</option>
+                    <option>Shift 2</option>
+                    <option>Shift 3</option>
+                  </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Petugas</label>
+                  <select class="select2" v-model="petugas" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                    <option value="Nahrul Hayat">Nahrul Hayat</option>
+                    <option>Syauqi</option>
+                    <option>Fauzi Anhari</option>
+                    <option>Suarno</option>
+                    <option>M.Risal</option>
+                    <option>Naufal Pradana</option>
+                    <option>M.Mustain</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-danger">
+          <div class="card-header">
+            <h3 class="card-title">Data</h3>
+          </div>
+          <div class="card-body">
+            <h5>Beban</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="r"  class="form-control" placeholder="R">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="s"  class="form-control" placeholder="S">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="t"  class="form-control" placeholder="T">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="n"  class="form-control" placeholder="N">
+              </div>
+            </div>
+            <!-- kwh -->
+            <h5>Kwh</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhOffice"  class="form-control" placeholder="office">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhDc"  class="form-control" placeholder="DC">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhTc"  class="form-control" placeholder="TC">
+              </div>
+            </div>
+            <!-- / kwh -->
+            <h5>Suhu</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="suhu1" class="form-control" placeholder="1">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="suhu2"  class="form-control" placeholder="2">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="suhu3"  class="form-control" placeholder="3">
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Preventif & Perawatan asset</h3>
+          </div>
+          <div class="card-body">
+            <h5>Pemeliharaan Asset</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" v-model="pemeliharaan" placeholder="Pemeliharaan"></textarea>
+                  </div>
+                </div>
+            </div>
+            <h5>Pekerjaan & Perbaikan</h5>
+            <div class="row">
+              <div class="col-sm-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" v-model="perbaikan" placeholder="Pekerjaan & Perbaikan"></textarea>
+                  </div>
+                </div>
+            </div>
+            <h5>Permintaan/Complain</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" v-model="permintaan" placeholder="Permintaan"></textarea>
+                  </div>
+                </div>
+            </div>
+            <h5>kejadian/temuan</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" v-model="kejadian" placeholder="Kejadian"></textarea>
+                  </div>
+                </div>
+            </div>
+            <h5>Keterangan/Catatan</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" v-model="catatan"placeholder="Operasional Normal"></textarea>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
+
+        <!-- /.row -->
+        <a @click="console()"v-bind:href="link"class="btn btn-primary mb-3">Kirim</a>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://nahrul.github.io/portfolio">Nahrul Hayat</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- vue -->
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!',
+        petugas: [],
+        shift: '',
+        tanggal:'',
+        r:'',
+        s:'',
+        t:'',
+        n:'',
+        kwhOffice:'',
+        kwhDc:'',
+        kwhTc:'',
+        suhu1:'',
+        suhu2:'',
+        suhu3:'',
+        pemeliharaan:'nihil',
+        perbaikan:'nihil',
+        permintaan:'',
+        kejadian:'nihil',
+        catatan:'Operasional Normal',
+        link : 'https://docs.google.com/forms/d/e/1FAIpQLSfcPUk0OJIdPjrni3KmUdrn6c4atya0_uHvHM6yDY-lh_JFcg/viewform?usp=send_form?usp=pp_url'
+
+      }
+    },
+    // mounted(){
+    //   axios.get("https://nahrul.github.io")
+    // },
+    methods:{
+      console(){
+        axios({
+          method: 'post',
+          url: 'https://docs.google.com/forms/d/e/1FAIpQLSeQy1dBsInUAuE5RjUP43jQNYjV1xBYv-0aLpIsNNFp0IOHbg/formResponse',
+          data: {
+            emailAddress: 'anjing@kau.com'
+          },
+          headers:{
+            "Access-Control-Allow-Origin": '*',
+            'origin': 'https://docs.google.com'
+          }
+        });
+        console.log(this)
+        let regional = "&entry.1251386738=ASY"
+        let nama_entry = "&entry.1386643190="
+        nama_entry += this.petugas
+        console.log(nama_entry)
+        let tahun = "&entry.1136196154_year="
+        tahun += this.tanggal
+        console.log(tahun)
+        let bulan = "&entry.1136196154_month="
+        let tanggal = "&entry.1136196154_day="
+        let zona = "&entry.1737599555=WIB"
+        let jam_masuk = "&entry.666255708_hour="
+        let menit_masuk = "&entry.666255708_minute="
+        let shift_entry = "&entry.458820389="
+        let jam_keluar = "&entry.1320728560_hour="
+        let menit_keluar = "&entry.1320728560_minute="
+        let cabang = "&entry.11845914=CIREBON"
+
+        let kva_pln1 = "&entry.1425743504=250"
+        let kva_pln2 = "&entry.1811372098=66"
+        let kva_pln3 = "&entry.1465374572=60"
+        let kva_pln_catatan = "&entry.1050631306"
+        let status_pln = "&entry.1503625449=Normal"
+        let unit_trafo = "&entry.1623498328=3+Unit"
+        let trafo1 = "&entry.1644025321=250"
+        let trafo2 = "&entry.105937284=66"
+        let trafo3 = "&entry.124466718=60"
+        let status_trafo1= "&entry.1076685182=OK"
+        let status_trafo2 = "&entry.1125670931=OK"
+        let status_trafo3 = "&entry.1537648042=OK"
+
+        let jumlah_genset = "&entry.836916224=3+Unit"
+        let genset1 = "&entry.34499611=175"
+        let genset2 = "&entry.680599205=60"
+        let genset3 = "&entry.1190301583=60"
+        let status_genset1 = "&entry.1028900588=Stand+by+Auto"
+        let status_genset2 = "&entry.1539680982=Stand+by+Auto"
+        let status_genset3 = "&entry.2068862473=Stand+by+Auto"
+
+        let jenis_panel = "&entry.955785228=LVMDP"
+
+
+
+        let beban_r = "&entry.670855053="
+        beban_r += this.r
+        console.log(beban_r)
+        let beban_t = "&entry.1021302425="
+        beban_t += this.t 
+        let beban_s = "&entry.1819587166="
+        beban_s += this.s
+        let beban_n = "&entry.1275826288="
+        beban_n += this.n
+
+        let fire_alarm = "&entry.181359338=Aktif"
+
+
+
+        let pompa_jokie = "&entry.209873353=Stand+by+Auto"
+        let pompa_diesel = "&entry.926069726=Nihil"
+        let electrical_fire_pump ="&entry.787116222=Stand+by+Auto"
+        let pompa_dorong = "&entry.1960544484=Stand+by+Auto"
+        let pompa_sumur = "&entry.216921219=ON"
+        let jumlah_pompa_sumur = "&entry.840879772=Pompa+air+sumur+office:+1+unit+(normal)%0APompa+transfer+office+dan+dc:+2+unit+(normal)%0APompa+sumur+pos1+:+1+unit+(normal)%0APompa+transfer+tc+:+1+unit+(normal)%0APompa+sumur+bmt+:+1+unit+(normal)"
+
+        let area_cctv = "&entry.1033210631=•++CCTV+Office+45CH+++:++ON%0A•++CCTV+Recruit++8CH:++ON%0A•++CCTV+Collect+24CH+:+ON%0A•++CCTV+TC+11CH+++:+ON%0A•++CCTV+DC+216CH+++:+ON%0A•++CCTV+DC+PRS+19CH+:++ON%0A•++CCTV+Posko+4CH++++:+ONC"
+        let jumlah_on = "&entry.1450700688="
+        let jumlah_off = "&entry.249967045="
+
+        let jumlah_coldroom = "&entry.1070854388=3"
+        let suhu_coldroom1 = "&entry.666490678="
+        let preasure_coldroom1 = "&entry.553580392="
+        let suhu_coldroom2 = "&entry.665166214="
+        let preasure_coldroom2 = "&entry.2052590279="
+        let suhu_coldroom3 = "&entry.2010845976="
+        let preasure_coldroom3 = "&entry.1394288064="
+        let status_coldroom1 = "&entry.761107784="
+        let status_coldroom2 = "&entry.277523632="
+        let status_coldroom3 = "&entry.1088315514="
+
+        let total_kwh = "&entry.399026465="
+        let area_kwh = "&entry.29450866="
+
+        let area_air = "&entry.970325908="
+        let total_air = "&entry.1548278604="
+
+        let pemeliharaan = "&entry.1099436377="
+        let perbaikan = "&entry.740829364="
+        let permintaan = "&entry.864780574="
+        let kejadian = "&entry.640345927="
+        let catatan = '&entry.1850401002=Operasional+Normal'
+
+        this.link+=regional+nama_entry+tahun+bulan+jam_masuk+jam_keluar+menit_masuk+menit_keluar+tanggal+cabang+zona+shift_entry+trafo1+trafo2+trafo3+kva_pln1+kva_pln2+kva_pln3+kva_pln_catatan+status_pln+status_trafo1+status_trafo2+status_trafo3+unit_trafo+jumlah_genset+status_genset1+status_genset2+status_genset3+genset1+genset2+genset3+jenis_panel+beban_r+beban_s+beban_t+beban_n+fire_alarm+pompa_jokie+pompa_diesel+pompa_sumur+electrical_fire_pump+jumlah_pompa_sumur+area_cctv+jumlah_on+jumlah_off+jumlah_coldroom+suhu_coldroom1+suhu_coldroom2+suhu_coldroom3+preasure_coldroom1+preasure_coldroom2+preasure_coldroom3+status_coldroom1+status_coldroom2+status_coldroom3+area_kwh+total_kwh+area_air+total_air+pemeliharaan+perbaikan+permintaan+kejadian+catatan
+      }
+    }
+  }).mount('#app')
+</script>
+
+<!-- jQuery -->
+<script src="asset/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+                  
+<script src="asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="asset/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="asset/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="asset/plugins/moment/moment.min.js"></script>
+<script src="asset/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="asset/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="asset/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="asset/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="asset/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="asset/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="asset/plugins/dropzone/min/dropzone.min.js"></script>
+<!-- AdminLTE App -->
+<script src="asset/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="asset/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
+
+  })
+  // BS-Stepper Init
+  document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+
+  // DropzoneJS Demo Code Start
+  Dropzone.autoDiscover = false
+
+  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+  var previewNode = document.querySelector("#template")
+  previewNode.id = ""
+  var previewTemplate = previewNode.parentNode.innerHTML
+  previewNode.parentNode.removeChild(previewNode)
+
+  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/target-url", // Set the url
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  })
+
+  myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+  })
+
+  // Update the total progress bar
+  myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+  })
+
+  myDropzone.on("sending", function(file) {
+    // Show the total progress bar when upload starts
+    document.querySelector("#total-progress").style.opacity = "1"
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+  })
+
+  // Hide the total progress bar when nothing's uploading anymore
+  myDropzone.on("queuecomplete", function(progress) {
+    document.querySelector("#total-progress").style.opacity = "0"
+  })
+
+  // Setup the buttons for all transfers
+  // The "add files" button doesn't need to be setup because the config
+  // `clickable` has already been specified.
+  document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+  }
+  document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true)
+  }
+  // DropzoneJS Demo Code End
+</script>
+
+
+
+<script>
+  // axios({
+  //   method: 'get',
+  //   url: 'https://bit.ly/2mTM3nY',
+  //   responseType: 'stream'
+  // })
+  //   .then(function (response) {
+  //     response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+  //   });
+</script>
+
+</body>
+</html>
