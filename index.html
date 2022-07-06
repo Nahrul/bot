@@ -76,7 +76,7 @@
           <img src="asset/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">BMT CIREBON</a>
         </div>
       </div>
 
@@ -105,32 +105,6 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
@@ -222,8 +196,8 @@
             <h3 class="card-title">Data</h3>
           </div>
           <div class="card-body">
+            <button @click="randnum()" class="btn btn-warning mb-2 btn-sm">Random</button>
             <h5>Beban</h5>
-            <button @click="randnum()" class="btn btn-warning mb-2 btn-sm">random</button>
             <div class="row">
               <div class="input-group col-md-3 col-5 mb-2">
                 <div class="input-group-prepend">
@@ -294,6 +268,68 @@
                 <input type="text" v-model="suhu3"  class="form-control" placeholder="3">
               </div>
             </div>
+            <h5>Preasure</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="preasure1" class="form-control" placeholder="1">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="preasure2"  class="form-control" placeholder="2">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="preasure3"  class="form-control" placeholder="3">
+              </div>
+            </div>
+            <h5>CCTV</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="cctvOn" class="form-control" placeholder="1">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="cctvOff"  class="form-control" placeholder="2">
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- advanced -->
+        <div class="card card-warning card-default collapsed-card">
+          <div class="card-header">
+            <h3 class="card-title">ADVANCED</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              
+            </div>
+            <!-- /.row -->
           </div>
           <!-- /.card-body -->
         </div>
@@ -352,7 +388,7 @@
         <!-- /.card -->
 
         <!-- /.row -->
-        <a @click="console()"v-bind:href="link"class="btn btn-primary mb-3">Kirim</a>
+        <a @click="console()"v-bind:href="link"class="btn btn-primary mb-3" target="blank">Kirim</a>
       </div>
       <!-- /.container-fluid -->
     </section>
@@ -361,7 +397,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 0.0.1 BETA
     </div>
     <strong>Copyright &copy; 2022 <a href="https://nahrul.github.io/portfolio">Nahrul Hayat</a>.</strong> All rights reserved.
   </footer>
@@ -395,15 +431,23 @@
         kwhOffice:'',
         kwhDc:'',
         kwhTc:'',
+        airOffice: '',
+        airBmt: '',
+        airTc: '',
         suhu1:'',
         suhu2:'',
         suhu3:'',
+        preasure1: '',
+        preasure2: '',
+        preasure3: '',
+        cctvOn: '327',
+        cctvOff: '0',
         pemeliharaan:'nihil',
         perbaikan:'nihil',
-        permintaan:'',
+        permintaan:'nihil',
         kejadian:'nihil',
         catatan:'Operasional Normal',
-        link : 'https://docs.google.com/forms/d/e/1FAIpQLSfcPUk0OJIdPjrni3KmUdrn6c4atya0_uHvHM6yDY-lh_JFcg/viewform?usp=send_form?usp=pp_url'
+        link : 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
 
       }
     },
@@ -415,6 +459,9 @@
         this.suhu1 = Math.floor(Math.random() * (6 - 2) + 2);
         this.suhu2 = Math.floor(Math.random() * (6 - 2) + 2);
         this.suhu3 = Math.floor(Math.random() * (6 - 2) + 2);
+        this.preasure1 = Math.floor(Math.random() * (29 - 26) + 26);
+        this.preasure2 = Math.floor(Math.random() * (29 - 26) + 26);
+        this.preasure3 = Math.floor(Math.random() * (29 - 26) + 26);
           if (this.shift == "Shift 1"){
             date = new Date().getDay() 
             if(date == 0 || date == 6){
@@ -457,26 +504,34 @@
         //     'origin': 'https://docs.google.com'
         //   }
         // });
+
         console.log(this)
         let regional = "&entry.1251386738=ASY"
+        // nama petugas
         let nama_entry = "&entry.1386643190="
-        nama_entry += this.petugas.replace(/\s+/g, "+")
-        console.log(nama_entry)
+        nama_entry += this.petugas.join(', ').replace(/ /g,"+")
+        // tahun
         let tahun = "&entry.1136196154_year="
         tahun += this.tahun
-        console.log(tahun)
+        // bulan
         let bulan = "&entry.1136196154_month="
         bulan += this.bulan
+        // penentuan tanggal
         let tanggal = "&entry.1136196154_day="
         if (this.shift == "Shift 3") {
           tanggal += this.tanggal - 1
+        }else{
+          tanggal += this.tanggal
         }
-        console.log(tanggal)
+
+
         let zona = "&entry.1737599555=WIB"
         let jam_masuk = "&entry.666255708_hour="
         let menit_masuk = "&entry.666255708_minute=00"
         let jam_keluar = "&entry.1320728560_hour="
         let menit_keluar = "&entry.1320728560_minute=00"
+
+        // penentuan jam masuk dan keluar berdasarkan shift
         if (this.shift == "Shift 1") {
           jam_masuk += 07
           jam_keluar += 15
@@ -489,11 +544,11 @@
           jam_keluar += 07
         }
         
+        // shift
         let shift_entry = "&entry.458820389="
         shift_entry += this.shift.replace(/\s+/g,"+")
-        console.log(shift_entry)
-        let cabang = "&entry.11845914=CIREBON"
 
+        let cabang = "&entry.11845914=CIREBON"
         let kva_pln1 = "&entry.1425743504=250"
         let kva_pln2 = "&entry.1811372098=66"
         let kva_pln3 = "&entry.1465374572=60"
@@ -506,7 +561,6 @@
         let status_trafo1= "&entry.1076685182=OK"
         let status_trafo2 = "&entry.1125670931=OK"
         let status_trafo3 = "&entry.1537648042=OK"
-
         let jumlah_genset = "&entry.836916224=3+Unit"
         let genset1 = "&entry.34499611=175"
         let genset2 = "&entry.680599205=60"
@@ -514,24 +568,23 @@
         let status_genset1 = "&entry.1028900588=Stand+by+Auto"
         let status_genset2 = "&entry.1539680982=Stand+by+Auto"
         let status_genset3 = "&entry.2068862473=Stand+by+Auto"
-
         let jenis_panel = "&entry.955785228=LVMDP"
 
 
-
+        // beban R
         let beban_r = "&entry.670855053="
         beban_r += this.r
-        let beban_t = "&entry.1021302425="
-        beban_t += this.t 
+        // beban S
         let beban_s = "&entry.1819587166="
         beban_s += this.s
+        // beban t 
+        let beban_t = "&entry.1021302425="
+        beban_t += this.t
+        // beban n
         let beban_n = "&entry.1275826288="
         beban_n += this.n
 
         let fire_alarm = "&entry.181359338=Aktif"
-
-
-
         let pompa_jokie = "&entry.209873353=Stand+by+Auto"
         let pompa_diesel = "&entry.926069726=Nihil"
         let electrical_fire_pump ="&entry.787116222=Stand+by+Auto"
@@ -540,39 +593,77 @@
         let jumlah_pompa_sumur = "&entry.840879772=Pompa+air+sumur+office:+1+unit+(normal)%0APompa+transfer+office+dan+dc:+2+unit+(normal)%0APompa+sumur+pos1+:+1+unit+(normal)%0APompa+transfer+tc+:+1+unit+(normal)%0APompa+sumur+bmt+:+1+unit+(normal)"
 
         let area_cctv = "&entry.1033210631=•++CCTV+Office+45CH+++:++ON%0A•++CCTV+Recruit++8CH:++ON%0A•++CCTV+Collect+24CH+:+ON%0A•++CCTV+TC+11CH+++:+ON%0A•++CCTV+DC+216CH+++:+ON%0A•++CCTV+DC+PRS+19CH+:++ON%0A•++CCTV+Posko+4CH++++:+ONC"
+        // cctv on
         let jumlah_on = "&entry.1450700688="
+        jumlah_on += this.cctvOn
+        // cctv off
         let jumlah_off = "&entry.249967045="
+        jumlah_off += this.cctvOff
 
         let jumlah_coldroom = "&entry.1070854388=3"
+        // suhu chiller 1
         let suhu_coldroom1 = "&entry.666490678="
-        suhu_coldroom1+= suhu1
+        suhu_coldroom1+= this.suhu1
+        // preasure chiler 1
         let preasure_coldroom1 = "&entry.553580392="
+        preasure_coldroom1 += this.preasure1
+        // suhu chiller 2
         let suhu_coldroom2 = "&entry.665166214="
-        suhu_coldroom2+= suhu2
+        suhu_coldroom2 += this.suhu2
+        // preasure chiller 2
         let preasure_coldroom2 = "&entry.2052590279="
+        preasure_coldroom2 += this.preasure2
+        // suhu chiller 3
         let suhu_coldroom3 = "&entry.2010845976="
-        suhu_coldroom3+= suhu3
+        suhu_coldroom3+= this.suhu3
+        // preasure chiller 3
         let preasure_coldroom3 = "&entry.1394288064="
-        let status_coldroom1 = "&entry.761107784="
-        let status_coldroom2 = "&entry.277523632="
-        let status_coldroom3 = "&entry.1088315514="
+        preasure_coldroom3 += this.preasure3
 
+        // status all chiller
+        let status_coldroom1 = "&entry.761107784=ON"
+        let status_coldroom2 = "&entry.277523632=ON"
+        let status_coldroom3 = "&entry.1088315514=ON"
+
+        // kwh
         let total_kwh = "&entry.399026465="
         let area_kwh = "&entry.29450866="
 
+        if(this.shift == "Shift 3"){
+          total_kwh += parseInt(this.kwhOffice) + parseInt(this.kwhDc) + parseInt(this.kwhTc)
+          console.log(total_kwh)
+        }
+
+        // flow meter
         let area_air = "&entry.970325908="
         let total_air = "&entry.1548278604="
+        // total_air += parseInt(this.airOffice) + parseInt(this.airBmt) + parseInt(this.airTc)
 
+        // pemeliharaan dan preventiv aset ----------------------------------
+        // pemelharaan
         let pemeliharaan = "&entry.1099436377="
-        pemeliharaan+= this.pemeliharaan.replace(/\s+/g, "+")
+        pemeliharaan += this.pemeliharaan
+        pemeliharaan = pemeliharaan.replace(/ /g, "+").replace(/\n/g, "%0A")
+        // perbaikan
         let perbaikan = "&entry.740829364="
-        perbaikan += this.perbaikan.replace(/\s+/g, "+")
+        perbaikan += this.perbaikan
+        perbaikan = perbaikan.replace(/ /g, "+").replace(/\n/g, "%0A")
+        // permintaan
         let permintaan = "&entry.864780574="
-        permintaan += this.permintaan.replace(/\s+/g, "+")
+        permintaan += this.permintaan
+        permintaan = permintaan.replace(/ /g, "+").replace(/\n/g, "%0A")
+        // kejadian
         let kejadian = "&entry.640345927="
-        kejadian += this.kejadian.replace(/\s+/g, "+")
-        let catatan = 'entry.369035004=Operasional+Normal'
+        kejadian += this.kejadian
+        kejadian = kejadian.replace(/ /g, "+").replace(/\n/g, "%0A")
+        // catatan
+        let catatan = '&entry.369035004='
+        catatan += this.catatan
+        catatan = catatan.replace(/ /g, "+").replace(/\n/g, "%0A")
 
+
+
+        // pembuatan link
         this.link+=regional+nama_entry+tahun+bulan+jam_masuk+jam_keluar+menit_masuk+menit_keluar+tanggal+cabang+zona+shift_entry+trafo1+trafo2+trafo3+kva_pln1+kva_pln2+kva_pln3+kva_pln_catatan+status_pln+status_trafo1+status_trafo2+status_trafo3+unit_trafo+jumlah_genset+status_genset1+status_genset2+status_genset3+genset1+genset2+genset3+jenis_panel+beban_r+beban_s+beban_t+beban_n+fire_alarm+pompa_jokie+pompa_diesel+pompa_sumur+electrical_fire_pump+jumlah_pompa_sumur+area_cctv+jumlah_on+jumlah_off+jumlah_coldroom+suhu_coldroom1+suhu_coldroom2+suhu_coldroom3+preasure_coldroom1+preasure_coldroom2+preasure_coldroom3+status_coldroom1+status_coldroom2+status_coldroom3+area_kwh+total_kwh+area_air+total_air+pemeliharaan+perbaikan+permintaan+kejadian+catatan
       }
     }

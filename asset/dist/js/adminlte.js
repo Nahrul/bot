@@ -1229,7 +1229,7 @@
     autoIframeMode: true,
     autoItemActive: true,
     autoShowNewTab: true,
-    autoDarkMode: false,
+    autoDarkMode: true,
     allowDuplicates: false,
     allowReload: true,
     loadingScreen: true,
