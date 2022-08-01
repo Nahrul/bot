@@ -149,7 +149,7 @@
               </button>
             </div>
           </div>
-          <!-- /.card-header -->
+         <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
@@ -225,29 +225,105 @@
               </div>
             </div>
             <!-- kwh -->
-            <h5>Kwh</h5>
-            <div class="row">
-              <div class="input-group col-md-3 col-5 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+            <h5 v-if="this.shift == 'Shift 3'">Kwh</h5>
+            <div v-if="this.shift == 'Shift 3'"class="row">
+              <h6>kwh office {{kwhOffice}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_office_kemarin"  class="form-control" placeholder="kwh kemarin">
                 </div>
-                <input type="text" v-model="kwhOffice"  class="form-control" placeholder="office">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_office_sekarang"  class="form-control" placeholder="kwh sekarang">
+                </div>
               </div>
-              <div class="input-group col-md-3 col-5 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+              <h6>kwh DC {{kwhDc}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_dc_kemarin"  class="form-control" placeholder="kwh kemarin">
                 </div>
-                <input type="text" v-model="kwhDc"  class="form-control" placeholder="DC">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_dc_sekarang"  class="form-control" placeholder="kwh sekarang">
+                </div>
               </div>
-              <div class="input-group col-md-3 col-5 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+              <h6>kwh tc {{kwhTc}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_tc_kemarin"  class="form-control" placeholder="kwh kemarin">
                 </div>
-                <input type="text" v-model="kwhTc"  class="form-control" placeholder="TC">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="kwh_tc_sekarang"  class="form-control" placeholder="kwh sekarang">
+                </div>
               </div>
             </div>
             <!-- / kwh -->
-            <h5>Suhu</h5>
+            <!-- air flow -->
+            <h5 v-if="this.shift == 'Shift 3'">Flow Meter Air</h5>
+            <div v-if="this.shift == 'Shift 3'"class="row">
+              <h6>Flow Meter Air office {{flowOffice}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_office_kemarin"  class="form-control" placeholder="flow kemarin">
+                </div>
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_office_sekarang"  class="form-control" placeholder="flow sekarang">
+                </div>
+              </div>
+              <h6>flow meter air bmt {{flowBmt}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_bmt_kemarin"  class="form-control" placeholder="flow kemarin">
+                </div>
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_bmt_sekarang"  class="form-control" placeholder="flow sekarang">
+                </div>
+              </div>
+              <h6>flow meter air tc {{flowTc}}</h6>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_tc_kemarin"  class="form-control" placeholder="flow kemarin">
+                </div>
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                  </div>
+                  <input type="text" v-model="flow_tc_sekarang"  class="form-control" placeholder="flow sekarang">
+                </div>
+              </div>
+            </div
+            <p>Suhu</p>
             <div class="row">
               <div class="input-group col-md-3 col-5 mb-2">
                 <div class="input-group-prepend">
@@ -289,21 +365,6 @@
                 <input type="text" v-model="preasure3"  class="form-control" placeholder="3">
               </div>
             </div>
-            <h5>CCTV</h5>
-            <div class="row">
-              <div class="input-group col-md-3 col-5 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
-                </div>
-                <input type="text" v-model="cctvOn" class="form-control" placeholder="1">
-              </div>
-              <div class="input-group col-md-3 col-5 mb-2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
-                </div>
-                <input type="text" v-model="cctvOff"  class="form-control" placeholder="2">
-              </div>
-            </div>
           </div>
           <!-- /.card-body -->
         </div>
@@ -323,8 +384,194 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+            <!-- <h5>Daya PLN</h5>
             <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="r"  class="form-control" placeholder="1">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="s"  class="form-control" placeholder="2">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="t"  class="form-control" placeholder="3">
+              </div>
+            </div> -->
+            <!-- kwh -->
+            <!-- <h5>Daya Trafo</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhOffice"  class="form-control" placeholder="office">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhDc"  class="form-control" placeholder="DC">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                </div>
+                <input type="text" v-model="kwhTc"  class="form-control" placeholder="TC">
+              </div>
+            </div> -->
+            <!-- / kwh -->
+            <h5>Fire Alarm</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-3">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" v-model="fire_alarm" true-value="Aktif" false-value="Non+Aktif" class="custom-control-input" id="fireAlarm">
+                  <label class="custom-control-label" for="fireAlarm">status fire alarm</label>
+                </div>
+              </div>
             </div>
+            <h5>Pompa</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="form-group clearfix">
+                  <h5>Pompa Jockey</h5>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_jokie" id="jokie_auto" name="jokie" value="Stand+by+Auto">
+                    <label for="jokie_auto">
+                      Stand by auto
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_jokie" value="Stand+by+Manual" id="jokieManual" name="jokie">
+                    <label for="jokieManual">
+                      Stand by manual
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_jokie" value="Nihil" id="jokieNihil" name="jokie" >
+                    <label for="jokieNihil">
+                      Nihil
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="form-group clearfix">
+                  <h5>Pompa Diesel</h5>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_diesel" id="dieselAuto" name="diesel" value="Stand+by+Auto">
+                    <label for="dieselAuto">
+                      Stand by auto
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_diesel" value="Stand+by+Manual" id="dieselManual" name="diesel">
+                    <label for="dieselManual">
+                      Stand by manual
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="pompa_diesel" value="Nihil" id="dieselNihil" name="diesel" >
+                    <label for="dieselNihil">
+                      Nihil
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="form-group clearfix">
+                  <h5>electrical fire pump</h5>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="electrical_fire_pump" id="electricAuto" name="eletrical" value="Stand+by+Auto">
+                    <label for="electricAuto">
+                      Stand by auto
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="electrical_fire_pump" value="Stand+by+Manual" id="electricManual" name="eletrical">
+                    <label for="electricManual">
+                      Stand by manual
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" v-model="electrical_fire_pump" value="Nihil" id="electricNihil" name="eletrical" >
+                    <label for="electricNihil">
+                      Nihil
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <h5>Jumlah pompa air</h5>
+                <div class="col-sm-12">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5" v-model="jumlah_pompa" placeholder="jumlah pompa"></textarea>
+                    </div>
+                </div>
+              </div>
+              <h5>Pompa Sumur</h5>
+              <div class="row">
+                <div class="input-group col-md-3 col-5 mb-2">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" v-model="pompa_sumur"  true-value="ON" false-value="OFF" class="custom-control-input" id="pompaSumur" checked>
+                    <label class="custom-control-label" for="pompaSumur">  {{pompa_sumur}}  </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h5>Cold Room</h5>
+            <div class="row">
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" v-model="status_coldroom1"  true-value="ON" false-value="OFF" class="custom-control-input" id="chiller1" checked>
+                  <label class="custom-control-label" for="chiller1">chiller 1 {{status_coldroom1}}</label>
+                </div>
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" v-model='status_coldroom2' true-value="ON" false-value="OFF" class="custom-control-input" id="chiller2">
+                  <label class="custom-control-label" for="chiller2">chiller 2 {{status_coldroom2 }}</label>
+                </div>
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" v-model="status_coldroom3" true-value="ON" false-value="OFF" class="custom-control-input" id="chiller3">
+                  <label class="custom-control-label" for="chiller3">chiller 3 {{ status_coldroom3 }}</label>
+                </div>
+              </div>
+            </div>
+            <h5>CCTV</h5>
+            <div class="row">
+              <h5>Area CCTV</h5>
+                <div class="col-sm-12">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5" v-model="area_cctv" placeholder="jumlah pompa"></textarea>
+                    </div>
+                </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="cctvOn" class="form-control" placeholder="cctv on">
+              </div>
+              <div class="input-group col-md-3 col-5 mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-thermometer-quarter"></i></span>
+                </div>
+                <input type="text" v-model="cctvOff"  class="form-control" placeholder="cctv off">
+              </div>
+            </div>
+            <button @click="advanced()" class="btn btn-success">Simpan</button>
+          </div>
             <!-- /.row -->
             <div class="row">
               
@@ -412,264 +659,9 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- vue -->
 <script src="https://unpkg.com/@vuepic/vue-datepicker@latest"></script>
-<script>
-  const { createApp } = Vue
 
-  createApp({
-    data() {
-      return {
-        message: 'Hello Vue!',
-        petugas: [],
-        shift: '',
-        tanggal: new Date().getDate(),
-        bulan: new Date().getMonth(),
-        tahun: new Date().getFullYear(),
-        r:'',
-        s:'',
-        t:'',
-        n:'',
-        kwhOffice:'',
-        kwhDc:'',
-        kwhTc:'',
-        airOffice: '',
-        airBmt: '',
-        airTc: '',
-        suhu1:'',
-        suhu2:'',
-        suhu3:'',
-        preasure1: '',
-        preasure2: '',
-        preasure3: '',
-        cctvOn: '327',
-        cctvOff: '0',
-        pemeliharaan:'nihil',
-        perbaikan:'nihil',
-        permintaan:'nihil',
-        kejadian:'nihil',
-        catatan:'Operasional Normal',
-        link : 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
-
-      }
-    },
-    // mounted(){
-    //   axios.get("https://nahrul.github.io")
-    // },
-    methods:{
-      randnum() { 
-        this.suhu1 = Math.floor(Math.random() * (6 - 2) + 2);
-        this.suhu2 = Math.floor(Math.random() * (6 - 2) + 2);
-        this.suhu3 = Math.floor(Math.random() * (6 - 2) + 2);
-        this.preasure1 = Math.floor(Math.random() * (29 - 26) + 26);
-        this.preasure2 = Math.floor(Math.random() * (29 - 26) + 26);
-        this.preasure3 = Math.floor(Math.random() * (29 - 26) + 26);
-          if (this.shift == "Shift 1"){
-            date = new Date().getDay() 
-            if(date == 0 || date == 6){
-              this.r = Math.floor(Math.random() * (150 - 140) + 140);
-              this.s = Math.floor(Math.random() * (150 - 140) + 140);
-              this.t = Math.floor(Math.random() * (150 - 140) + 140);
-              this.n = Math.floor(Math.random() * (50 - 47) + 47);
-            }else{
-              this.r = Math.floor(Math.random() * (210 - 190) + 190);
-              this.s = Math.floor(Math.random() * (210 - 190) + 190);
-              this.t = Math.floor(Math.random() * (210 - 190) + 190);
-              this.n = Math.floor(Math.random() * (50 - 47) + 47);
-            }
-          }else if(this.shift == "Shift 2"){
-            this.r = Math.floor(Math.random() * (150 - 140) + 140);
-            this.s = Math.floor(Math.random() * (150 - 140) + 140);
-            this.t = Math.floor(Math.random() * (150 - 140) + 140);
-            this.n = Math.floor(Math.random() * (50 - 47) + 47);
-          }else if(this.shift == "Shift 3"){
-            this.r = Math.floor(Math.random() * (150 - 140) + 140);
-            this.s = Math.floor(Math.random() * (150 - 140) + 140);
-            this.t = Math.floor(Math.random() * (150 - 140) + 140);
-            this.n = Math.floor(Math.random() * (50 - 47) + 47);
-            this.kwhOffice = Math.floor(Math.random() * (37 - 29) + 29);
-            this.kwhDc = Math.floor(Math.random() * (27 - 20) + 20);
-          }
-
-
-      },
-      console(){
-        
-        // axios({
-        //   method: 'post',
-        //   url: 'https://cors-anywhere.herokuapp.com/https://docs.google.com/forms/d/e/1FAIpQLSeQy1dBsInUAuE5RjUP43jQNYjV1xBYv-0aLpIsNNFp0IOHbg/formResponse',
-        //   data: {
-        //     emailAddress: 'anjing@kau.com'
-        //   },
-        //   headers:{
-        //     "Access-Control-Allow-Origin": '*',
-        //     'origin': 'https://docs.google.com'
-        //   }
-        // });
-
-        console.log(this)
-        let regional = "&entry.1251386738=ASY"
-        // nama petugas
-        let nama_entry = "&entry.1386643190="
-        nama_entry += this.petugas.join(', ').replace(/ /g,"+")
-        // tahun
-        let tahun = "&entry.1136196154_year="
-        tahun += this.tahun
-        // bulan
-        let bulan = "&entry.1136196154_month="
-        bulan += this.bulan
-        // penentuan tanggal
-        let tanggal = "&entry.1136196154_day="
-        if (this.shift == "Shift 3") {
-          tanggal += this.tanggal - 1
-        }else{
-          tanggal += this.tanggal
-        }
-
-
-        let zona = "&entry.1737599555=WIB"
-        let jam_masuk = "&entry.666255708_hour="
-        let menit_masuk = "&entry.666255708_minute=00"
-        let jam_keluar = "&entry.1320728560_hour="
-        let menit_keluar = "&entry.1320728560_minute=00"
-
-        // penentuan jam masuk dan keluar berdasarkan shift
-        if (this.shift == "Shift 1") {
-          jam_masuk += 07
-          jam_keluar += 15
-          console.log(jam_masuk)          
-        }else if(this.shift == "Shift 2") {
-          jam_masuk += 15
-          jam_keluar += 23
-        }else{
-          jam_masuk += 23
-          jam_keluar += 07
-        }
-        
-        // shift
-        let shift_entry = "&entry.458820389="
-        shift_entry += this.shift.replace(/\s+/g,"+")
-
-        let cabang = "&entry.11845914=CIREBON"
-        let kva_pln1 = "&entry.1425743504=250"
-        let kva_pln2 = "&entry.1811372098=66"
-        let kva_pln3 = "&entry.1465374572=60"
-        let kva_pln_catatan = "&entry.1050631306"
-        let status_pln = "&entry.1503625449=Normal"
-        let unit_trafo = "&entry.1623498328=3+Unit"
-        let trafo1 = "&entry.1644025321=250"
-        let trafo2 = "&entry.105937284=66"
-        let trafo3 = "&entry.124466718=60"
-        let status_trafo1= "&entry.1076685182=OK"
-        let status_trafo2 = "&entry.1125670931=OK"
-        let status_trafo3 = "&entry.1537648042=OK"
-        let jumlah_genset = "&entry.836916224=3+Unit"
-        let genset1 = "&entry.34499611=175"
-        let genset2 = "&entry.680599205=60"
-        let genset3 = "&entry.1190301583=60"
-        let status_genset1 = "&entry.1028900588=Stand+by+Auto"
-        let status_genset2 = "&entry.1539680982=Stand+by+Auto"
-        let status_genset3 = "&entry.2068862473=Stand+by+Auto"
-        let jenis_panel = "&entry.955785228=LVMDP"
-
-
-        // beban R
-        let beban_r = "&entry.670855053="
-        beban_r += this.r
-        // beban S
-        let beban_s = "&entry.1819587166="
-        beban_s += this.s
-        // beban t 
-        let beban_t = "&entry.1021302425="
-        beban_t += this.t
-        // beban n
-        let beban_n = "&entry.1275826288="
-        beban_n += this.n
-
-        let fire_alarm = "&entry.181359338=Aktif"
-        let pompa_jokie = "&entry.209873353=Stand+by+Auto"
-        let pompa_diesel = "&entry.926069726=Nihil"
-        let electrical_fire_pump ="&entry.787116222=Stand+by+Auto"
-        let pompa_dorong = "&entry.1960544484=Stand+by+Auto"
-        let pompa_sumur = "&entry.216921219=ON"
-        let jumlah_pompa_sumur = "&entry.840879772=Pompa+air+sumur+office:+1+unit+(normal)%0APompa+transfer+office+dan+dc:+2+unit+(normal)%0APompa+sumur+pos1+:+1+unit+(normal)%0APompa+transfer+tc+:+1+unit+(normal)%0APompa+sumur+bmt+:+1+unit+(normal)"
-
-        let area_cctv = "&entry.1033210631=•++CCTV+Office+45CH+++:++ON%0A•++CCTV+Recruit++8CH:++ON%0A•++CCTV+Collect+24CH+:+ON%0A•++CCTV+TC+11CH+++:+ON%0A•++CCTV+DC+216CH+++:+ON%0A•++CCTV+DC+PRS+19CH+:++ON%0A•++CCTV+Posko+4CH++++:+ONC"
-        // cctv on
-        let jumlah_on = "&entry.1450700688="
-        jumlah_on += this.cctvOn
-        // cctv off
-        let jumlah_off = "&entry.249967045="
-        jumlah_off += this.cctvOff
-
-        let jumlah_coldroom = "&entry.1070854388=3"
-        // suhu chiller 1
-        let suhu_coldroom1 = "&entry.666490678="
-        suhu_coldroom1+= this.suhu1
-        // preasure chiler 1
-        let preasure_coldroom1 = "&entry.553580392="
-        preasure_coldroom1 += this.preasure1
-        // suhu chiller 2
-        let suhu_coldroom2 = "&entry.665166214="
-        suhu_coldroom2 += this.suhu2
-        // preasure chiller 2
-        let preasure_coldroom2 = "&entry.2052590279="
-        preasure_coldroom2 += this.preasure2
-        // suhu chiller 3
-        let suhu_coldroom3 = "&entry.2010845976="
-        suhu_coldroom3+= this.suhu3
-        // preasure chiller 3
-        let preasure_coldroom3 = "&entry.1394288064="
-        preasure_coldroom3 += this.preasure3
-
-        // status all chiller
-        let status_coldroom1 = "&entry.761107784=ON"
-        let status_coldroom2 = "&entry.277523632=ON"
-        let status_coldroom3 = "&entry.1088315514=ON"
-
-        // kwh
-        let total_kwh = "&entry.399026465="
-        let area_kwh = "&entry.29450866="
-
-        if(this.shift == "Shift 3"){
-          total_kwh += parseInt(this.kwhOffice) + parseInt(this.kwhDc) + parseInt(this.kwhTc)
-          console.log(total_kwh)
-        }
-
-        // flow meter
-        let area_air = "&entry.970325908="
-        let total_air = "&entry.1548278604="
-        // total_air += parseInt(this.airOffice) + parseInt(this.airBmt) + parseInt(this.airTc)
-
-        // pemeliharaan dan preventiv aset ----------------------------------
-        // pemelharaan
-        let pemeliharaan = "&entry.1099436377="
-        pemeliharaan += this.pemeliharaan
-        pemeliharaan = pemeliharaan.replace(/ /g, "+").replace(/\n/g, "%0A")
-        // perbaikan
-        let perbaikan = "&entry.740829364="
-        perbaikan += this.perbaikan
-        perbaikan = perbaikan.replace(/ /g, "+").replace(/\n/g, "%0A")
-        // permintaan
-        let permintaan = "&entry.864780574="
-        permintaan += this.permintaan
-        permintaan = permintaan.replace(/ /g, "+").replace(/\n/g, "%0A")
-        // kejadian
-        let kejadian = "&entry.640345927="
-        kejadian += this.kejadian
-        kejadian = kejadian.replace(/ /g, "+").replace(/\n/g, "%0A")
-        // catatan
-        let catatan = '&entry.369035004='
-        catatan += this.catatan
-        catatan = catatan.replace(/ /g, "+").replace(/\n/g, "%0A")
-
-
-
-        // pembuatan link
-        this.link+=regional+nama_entry+tahun+bulan+jam_masuk+jam_keluar+menit_masuk+menit_keluar+tanggal+cabang+zona+shift_entry+trafo1+trafo2+trafo3+kva_pln1+kva_pln2+kva_pln3+kva_pln_catatan+status_pln+status_trafo1+status_trafo2+status_trafo3+unit_trafo+jumlah_genset+status_genset1+status_genset2+status_genset3+genset1+genset2+genset3+jenis_panel+beban_r+beban_s+beban_t+beban_n+fire_alarm+pompa_jokie+pompa_diesel+pompa_sumur+electrical_fire_pump+jumlah_pompa_sumur+area_cctv+jumlah_on+jumlah_off+jumlah_coldroom+suhu_coldroom1+suhu_coldroom2+suhu_coldroom3+preasure_coldroom1+preasure_coldroom2+preasure_coldroom3+status_coldroom1+status_coldroom2+status_coldroom3+area_kwh+total_kwh+area_air+total_air+pemeliharaan+perbaikan+permintaan+kejadian+catatan
-      }
-    }
-  }).mount('#app')
-</script>
-
+<!-- logic -->
+<script src="asset/dist/js/main.js"></script>
 <!-- jQuery -->
 <script src="asset/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
