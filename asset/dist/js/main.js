@@ -67,6 +67,7 @@ pengukuran beban trafo`,
         status_coldroom1 : 'ON',
         status_coldroom2 : 'ON',
         status_coldroom3 : 'ON',
+        laporan_wa: ``,
 
 
 
@@ -134,8 +135,72 @@ pengukuran beban trafo`,
         this.flowBmt = parseInt(this.flow_bmt_sekarang) - parseInt(this.flow_bmt_kemarin)
         this.flowTc = parseInt(this.flow_tc_sekarang) - parseInt(this.flow_tc_kemarin)
       }
+      
     },
     methods:{
+      laporan(){
+        this.laporan_wa = `
+        LAPORAN HARIAN BMT `+ this.shift +`
+
+Unit :IDM Cab. Cirebon
+Hari/tgl : Rabu, `+ this.tanggal +` Agustus `+ this.tahun +`
+Waktu :07:00 - 15:00 WIB
+Petugas: `+ this.petugas.join(', ') +`
+==============================
+OPERASIONAL UTILITAS GEDUNG 
+
+• Power PLN : Normal
+• Trafo office 250 kVA : Temp  30°C
+R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n +`A
+RS. 384  RT. 385  ST. 388
+RN.222    TN.222   SN.228  NG 1.0
+
+• Trafo DC 66 kVA : Temp 32°C
+R.  34A    S.  38A    T.  40A    N. 18A
+RS. 385    RT. 388    ST. 390
+RN.224   TN.230     SN.227   NG 1.0
+
+• Trafo TC 50 kVA : Temp 30°C
+R.  15A     S.  15A     T.  18A    N. 0A
+RS. 382    RT. 380   ST. 384
+RN.222   TN.220     SN.228  NG 1.5
+
+• Genset 160 kVA : Stand By Automatic
+• Genset 60 kVA : Stand By Automatic
+• Genset 60 kVA : Stand By Automatic
+• Pompa Dorong : 2 Unit Auto
+• Pompa Sumur : 1 Unit Auto 
+• Chiller Cold Room : 3 Unit ON
+ - CR1 : Temp/Bar - `+ this.suhu1 +`°C
+ - CR2 : Temp/Bar - `+ this.suhu2 +`°C
+ - CR3 : Temp/Bar - `+ this.suhu3 +`°C
+• Pompa Hydrant : standby
+• Fire Alarm Detector : Aktif
+`+ this.area_cctv +`
+
+Total CCTV : `+ this.cctvOn +` Unit
+Total Rusak : `+ this.cctvOff +` unit
+
+ PEMELIHARAAN & PERBAIKAN
+ Preventif Asset : 
+`+ this.pemeliharaan +`
+
+
+PEK. PERBAIKAN
+`+ this.perbaikan +`
+
+PERMINTAAN PEKERJAAN & KOMPLAIN
+`+ this.permintaan +`
+
+
+KEJADIAN/TEMUAN
+`+ this.kejadian +`
+
+KETERANGAN/CACATAN
+
+`+ this.catatan +`
+`
+      },
       advanced(){
         localStorage.setItem('fire alarm', this.fire_alarm)
         localStorage.setItem('pompa jokie', this.pompa_jokie)
@@ -383,6 +448,68 @@ pengukuran beban trafo`,
         let catatan = '&entry.369035004='
         catatan += this.catatan
         catatan = catatan.replace(/ /g, "+").replace(/\n/g, "%0A")
+
+        laporan_wa = `
+        LAPORAN HARIAN BMT SHIFT 1
+
+Unit :IDM Cab. Cirebon
+Hari/tgl : Rabu, 03 Agustus 2022
+Waktu :07:00 - 15:00 WIB
+Petugas: `+ this.petugas.join(', ').replace(/ /g,"+") +`
+==============================
+OPERASIONAL UTILITAS GEDUNG 
+
+• Power PLN : Normal
+• Trafo office 250 kVA : Temp  30°C
+R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n`A
+RS. 384  RT. 385  ST. 388
+RN.222    TN.222   SN.228  NG 1.0
+
+• Trafo DC 66 kVA : Temp 32°C
+R.  34A    S.  38A    T.  40A    N. 18A
+RS. 385    RT. 388    ST. 390
+RN.224   TN.230     SN.227   NG 1.0
+
+• Trafo TC 50 kVA : Temp 30°C
+R.  15A     S.  15A     T.  18A    N. 0A
+RS. 382    RT. 380   ST. 384
+RN.222   TN.220     SN.228  NG 1.5
+
+• Genset 160 kVA : Stand By Automatic
+• Genset 60 kVA : Stand By Automatic
+• Genset 60 kVA : Stand By Automatic
+• Pompa Dorong : 2 Unit Auto
+• Pompa Sumur : 1 Unit Auto 
+• Chiller Cold Room : 3 Unit ON
+ - CR1 : Temp/Bar - `+ this.suhu1 +`°C
+ - CR2 : Temp/Bar - `+ this.suhu2 +`°C
+ - CR3 : Temp/Bar - `+ this.suhu3 +`°C
+• Pompa Hydrant : standby
+• Fire Alarm Detector : Aktif
+`+ this.area_cctv +`
+
+Total CCTV : `+ this.cctvOn +` Unit
+Total Rusak : `+ this.cctvOff +` unit
+
+ PEMELIHARAAN & PERBAIKAN
+ Preventif Asset : 
+`+ this.pemeliharaan +`
+
+
+PEK. PERBAIKAN
+`+ this.perbaikan +`
+
+PERMINTAAN PEKERJAAN & KOMPLAIN
+`+ this.permintaan +`
+
+
+KEJADIAN/TEMUAN
+
+
+KETERANGAN/CACATAN
+
+`+ this.catatan +`
+`
 
 
         // pembuatan link
