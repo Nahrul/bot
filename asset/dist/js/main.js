@@ -167,24 +167,25 @@ pengukuran beban trafo`,
           tdc = Math.floor(Math.random() * (55 - 30) + 30);
           ndc = Math.floor(Math.random() * (20 - 32) + 32);
 
+        let tanggal1 = new Date().getDate()
+
         if (this.shift == "Shift 3") {
-          if (this.tanggal == 1){
+          if (tanggal1 == 1){
             let b = new Date().getMonth() -1
             this.bulan = b + 1
-            this.tanggal = new Date(this.tahun, b + 1,0).getDate()
+            tanggal1 = new Date(this.tahun, b + 1,0).getDate()
           }else{
-            this.tanggal - 1
+            tanggal1 = tanggal1 - 1
           }
         }else{
-          this.tanggal
+          tanggal1 = tanggal1
         }
         // penentuan jam masuk dan keluar berdasarkan shift
         let jam_masuk = ''
         let jam_keluar = ''
         if (this.shift == "Shift 1") {
           jam_masuk += 07
-          jam_keluar += 15
-          console.log(jam_masuk)          
+          jam_keluar += 15       
         }else if(this.shift == "Shift 2") {
           jam_masuk += 15
           jam_keluar += 23
@@ -198,11 +199,14 @@ pengukuran beban trafo`,
         let month = months[this.bulan - 1];
         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
         let day = days[d.getDay()];
+        if(this.shift == "Shift 3"){
+          day = days[d.getDay()-1];
+        }
         this.laporan_wa = `
         LAPORAN HARIAN BMT `+ this.shift +`
 
 Unit :IDM Cab. Cirebon
-Hari/tgl : `+ day +`, `+ this.tanggal +` `+ month +` `+ this.tahun +`
+Hari/tgl : `+ day +`, `+ tanggal1 +` `+ month +` `+ this.tahun +`
 Waktu :`+ jam_masuk +`:00 - `+ jam_keluar +`:00 WIB
 Petugas: `+ this.petugas.join(', ') +`
 ==============================
