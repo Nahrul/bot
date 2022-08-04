@@ -143,10 +143,30 @@ pengukuran beban trafo`,
         copyText.select();
         // copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
-        document.execCommand("copy")
+        // document.execCommand("copy")
         alert('copy to clipboard!')
       },
       laporan(){
+        if (this.shift == "Shift 1"){
+            date = new Date().getDay() 
+            if(date == 0 || date == 6){
+              rtc = Math.floor(Math.random() * (2 - 0) + 0);
+              stc = Math.floor(Math.random() * (2 - 0) + 0);
+              ttc = Math.floor(Math.random() * (2 - 0) + 0);
+            }else{
+              rtc = Math.floor(Math.random() * (50 - 20) + 20);
+              stc = Math.floor(Math.random() * (50 - 20) + 20);
+              ttc = Math.floor(Math.random() * (50 - 20) + 20);            }
+          }else if(this.shift == "Shift 2" || "Shift 3"){
+            rtc = Math.floor(Math.random() * (2 - 0) + 0);
+            stc = Math.floor(Math.random() * (2 - 0) + 0);
+            ttc = Math.floor(Math.random() * (2 - 0) + 0);
+          }
+          rdc = Math.floor(Math.random() * (55 - 30) + 30);
+          sdc = Math.floor(Math.random() * (55 - 30) + 30);
+          tdc = Math.floor(Math.random() * (55 - 30) + 30);
+          ndc = Math.floor(Math.random() * (20 - 32) + 32);
+
         if (this.shift == "Shift 3") {
           if (this.tanggal == 1){
             let b = new Date().getMonth() -1
@@ -195,12 +215,12 @@ RS. 384  RT. 385  ST. 388
 RN.222    TN.222   SN.228  NG 1.0
 
 • Trafo DC 66 kVA : Temp 32°C
-R.  34A    S.  38A    T.  40A    N. 18A
+R.  `+ rdc +`A    S.  `+ sdc +`A    T.  `+ tdc +`A    N. `+ ndc +`A
 RS. 385    RT. 388    ST. 390
 RN.224   TN.230     SN.227   NG 1.0
 
 • Trafo TC 50 kVA : Temp 30°C
-R.  15A     S.  15A     T.  18A    N. 0A
+R.  `+ rtc +`A     S.  `+ stc +`A     T.  `+ ttc +`A    N. 0A
 RS. 382    RT. 380   ST. 384
 RN.222   TN.220     SN.228  NG 1.5
 
@@ -253,6 +273,7 @@ KETERANGAN/CACATAN
         localStorage.setItem('area cctv', this.area_cctv)
         localStorage.setItem('cctvOn', this.cctvOn)
         localStorage.setItem('cctvOff', this.cctvOff)
+        alert("data tersimpan!")
       },
       randnum() { 
         this.suhu1 = Math.floor(Math.random() * (6 - 2) + 2);
@@ -284,8 +305,6 @@ KETERANGAN/CACATAN
             this.s = Math.floor(Math.random() * (150 - 140) + 140);
             this.t = Math.floor(Math.random() * (150 - 140) + 140);
             this.n = Math.floor(Math.random() * (50 - 47) + 47);
-            this.kwhOffice = Math.floor(Math.random() * (37 - 29) + 29);
-            this.kwhDc = Math.floor(Math.random() * (27 - 20) + 20);
           }
 
 
