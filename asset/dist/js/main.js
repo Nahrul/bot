@@ -138,13 +138,51 @@ pengukuran beban trafo`,
       
     },
     methods:{
+      copy() {
+        var copyText = document.getElementById("copyText");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        alert('copy to clipboard!')
+      },
       laporan(){
+        if (this.shift == "Shift 3") {
+          if (this.tanggal == 1){
+            let b = new Date().getMonth() -1
+            this.bulan = b + 1
+            this.tanggal = new Date(this.tahun, b + 1,0).getDate()
+          }else{
+            this.tanggal - 1
+          }
+        }else{
+          this.tanggal
+        }
+        // penentuan jam masuk dan keluar berdasarkan shift
+        let jam_masuk = ''
+        let jam_keluar = ''
+        if (this.shift == "Shift 1") {
+          jam_masuk += 07
+          jam_keluar += 15
+          console.log(jam_masuk)          
+        }else if(this.shift == "Shift 2") {
+          jam_masuk += 15
+          jam_keluar += 23
+        }else{
+          jam_masuk += 23
+          jam_keluar += 07
+        }
+        const months = ["January", "February", "Maret", "April", "Mei", "Juni", "July", "Agustus", "September", "Oktober", "November", "Desember"];
+
+        const d = new Date();
+        let month = months[this.bulan - 1];
+        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        let day = days[d.getDay()];
         this.laporan_wa = `
         LAPORAN HARIAN BMT `+ this.shift +`
 
 Unit :IDM Cab. Cirebon
-Hari/tgl : Rabu, `+ this.tanggal +` Agustus `+ this.tahun +`
-Waktu :07:00 - 15:00 WIB
+Hari/tgl : `+ day +`, `+ this.tanggal +` `+ month +` `+ this.tahun +`
+Waktu :`+ jam_masuk +`:00 - `+ jam_keluar +`:00 WIB
 Petugas: `+ this.petugas.join(', ') +`
 ==============================
 OPERASIONAL UTILITAS GEDUNG 
@@ -461,7 +499,7 @@ OPERASIONAL UTILITAS GEDUNG
 
 • Power PLN : Normal
 • Trafo office 250 kVA : Temp  30°C
-R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n`A
+R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n +`A
 RS. 384  RT. 385  ST. 388
 RN.222    TN.222   SN.228  NG 1.0
 

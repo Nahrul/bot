@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Advanced form elements</title>
+  <title>LAPORAN HARIAN </title>
   <script src="https://unpkg.com/vue@3"></script>
 
   
@@ -65,7 +65,7 @@
     <!-- Brand Logo -->
     <a href="asset/index3.html" class="brand-link">
       <img src="asset/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">LAPORAN</span>
     </a>
 
     <!-- Sidebar -->
@@ -646,25 +646,24 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">LAPORAN WHATSAPP</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <h5>Keterangan/Catatan</h5>
                 <div class="row">
                     <div class="col-sm-12">
                       <!-- textarea -->
                       <div class="form-group">
-                        <textarea class="form-control" rows="5" v-model="laporan_wa"placeholder="Operasional Normal"></textarea>
+                        <textarea class="form-control" id="copyText" rows="10" v-model="laporan_wa"placeholder="Operasional Normal"></textarea>
                       </div>
                     </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" @click='copy()'  class="btn btn-primary">copy</button>
               </div>
             </div>
           </div>
@@ -677,7 +676,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 0.0.1 BETA
+      <b>Version</b> 1.0 
     </div>
     <strong>Copyright &copy; 2022 <a href="https://nahrul.github.io/portfolio">Nahrul Hayat</a>.</strong> All rights reserved.
   </footer>
