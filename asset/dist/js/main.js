@@ -77,6 +77,7 @@ pengukuran beban trafo`,
     //   this.kwhOffice = parseInt(this.kwh_office_sekarang) - parseInt(this.kwh_office_kemarin)
     // },
     created(){
+      this.link = localStorage.getItem('lik') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
       this.petugas = JSON.parse(localStorage.getItem('nama')) || []
       this.fire_alarm = localStorage.getItem('fire alarm') || 'Aktif'
       this.pompa_jokie = localStorage.getItem('pompa jokie') || 'Stand+by+Auto'
@@ -166,6 +167,24 @@ pengukuran beban trafo`,
           sdc = Math.floor(Math.random() * (55 - 30) + 30);
           tdc = Math.floor(Math.random() * (55 - 30) + 30);
           ndc = Math.floor(Math.random() * (20 - 32) + 32);
+        rndc = Math.floor(Math.random() * (220 - 280) + 280);
+        sndc = Math.floor(Math.random() * (220 - 280) + 280);
+        tndc = Math.floor(Math.random() * (220 - 280) + 280);
+        rnoffice = Math.floor(Math.random() * (220 - 280) + 280);
+        snoffice = Math.floor(Math.random() * (220 - 280) + 280);
+        tnofffice = Math.floor(Math.random() * (220 - 280) + 280);
+        rntc = Math.floor(Math.random() * (220 - 280) + 280);
+        sntc = Math.floor(Math.random() * (220 - 280) + 280);
+        tntc = Math.floor(Math.random() * (220 - 280) + 280);
+        rsdc = Math.floor(Math.random() * (378 - 390) + 390);
+        rtdc = Math.floor(Math.random() * (378 - 390) + 390);
+        stdc = Math.floor(Math.random() * (378 - 390) + 390);
+        rsoffice = Math.floor(Math.random() * (378 - 390) + 390);
+        rtoffice = Math.floor(Math.random() * (378 - 390) + 390);
+        stoffice = Math.floor(Math.random() * (378 - 390) + 390);
+        rstc = Math.floor(Math.random() * (378 - 390) + 390);
+        rttc = Math.floor(Math.random() * (378 - 390) + 390);
+        sttc = Math.floor(Math.random() * (378 - 390) + 390);
 
         let tanggal1 = new Date().getDate()
 
@@ -215,18 +234,18 @@ OPERASIONAL UTILITAS GEDUNG
 • Power PLN : Normal
 • Trafo office 250 kVA : Temp  30°C
 R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n +`A
-RS. 384  RT. 385  ST. 388
-RN.222    TN.222   SN.228  NG 1.0
+RS. `+ rsoffice +`  RT. `+ rtoffice +`  ST. `+ stoffice +`
+RN. `+ rnoffice +`    TN.`+ tnofffice +`   SN.`+ snoffice +`  NG 1.0
 
 • Trafo DC 66 kVA : Temp 32°C
 R.  `+ rdc +`A    S.  `+ sdc +`A    T.  `+ tdc +`A    N. `+ ndc +`A
-RS. 385    RT. 388    ST. 390
-RN.224   TN.230     SN.227   NG 1.0
+RS. `+ rsdc +`   RT. `+ rtdc +`    ST. `+ stdc +`
+RN.`+ rndc +`   TN.`+ tndc +`     SN.`+ sndc +`   NG 1.0
 
 • Trafo TC 50 kVA : Temp 30°C
 R.  `+ rtc +`A     S.  `+ stc +`A     T.  `+ ttc +`A    N. 0A
-RS. 382    RT. 380   ST. 384
-RN.222   TN.220     SN.228  NG 1.5
+RS. `+ rstc +`    RT. `+ rttc +`   ST. `+ sttc +`
+RN.`+ rntc +`   TN.`+ tntc +`     SN.`+ sntc +`  NG 1.5
 
 • Genset 160 kVA : Stand By Automatic
 • Genset 60 kVA : Stand By Automatic
@@ -277,6 +296,8 @@ KETERANGAN/CACATAN
         localStorage.setItem('area cctv', this.area_cctv)
         localStorage.setItem('cctvOn', this.cctvOn)
         localStorage.setItem('cctvOff', this.cctvOff)
+        localStorage.setItem('link', this.link)
+
         alert("data tersimpan!")
       },
       randnum() { 
@@ -510,68 +531,6 @@ KETERANGAN/CACATAN
         let catatan = '&entry.369035004='
         catatan += this.catatan
         catatan = catatan.replace(/ /g, "+").replace(/\n/g, "%0A")
-
-        laporan_wa = `
-        LAPORAN HARIAN BMT SHIFT 1
-
-Unit :IDM Cab. Cirebon
-Hari/tgl : Rabu, 03 Agustus 2022
-Waktu :07:00 - 15:00 WIB
-Petugas: `+ this.petugas.join(', ').replace(/ /g,"+") +`
-==============================
-OPERASIONAL UTILITAS GEDUNG 
-
-• Power PLN : Normal
-• Trafo office 250 kVA : Temp  30°C
-R.  `+ this.r +`A   S.  `+ this.s +`A   T.  `+ this.t +`A   N. `+ this.n +`A
-RS. 384  RT. 385  ST. 388
-RN.222    TN.222   SN.228  NG 1.0
-
-• Trafo DC 66 kVA : Temp 32°C
-R.  34A    S.  38A    T.  40A    N. 18A
-RS. 385    RT. 388    ST. 390
-RN.224   TN.230     SN.227   NG 1.0
-
-• Trafo TC 50 kVA : Temp 30°C
-R.  15A     S.  15A     T.  18A    N. 0A
-RS. 382    RT. 380   ST. 384
-RN.222   TN.220     SN.228  NG 1.5
-
-• Genset 160 kVA : Stand By Automatic
-• Genset 60 kVA : Stand By Automatic
-• Genset 60 kVA : Stand By Automatic
-• Pompa Dorong : 2 Unit Auto
-• Pompa Sumur : 1 Unit Auto 
-• Chiller Cold Room : 3 Unit ON
- - CR1 : Temp/Bar - `+ this.suhu1 +`°C
- - CR2 : Temp/Bar - `+ this.suhu2 +`°C
- - CR3 : Temp/Bar - `+ this.suhu3 +`°C
-• Pompa Hydrant : standby
-• Fire Alarm Detector : Aktif
-`+ this.area_cctv +`
-
-Total CCTV : `+ this.cctvOn +` Unit
-Total Rusak : `+ this.cctvOff +` unit
-
- PEMELIHARAAN & PERBAIKAN
- Preventif Asset : 
-`+ this.pemeliharaan +`
-
-
-PEK. PERBAIKAN
-`+ this.perbaikan +`
-
-PERMINTAAN PEKERJAAN & KOMPLAIN
-`+ this.permintaan +`
-
-
-KEJADIAN/TEMUAN
-
-
-KETERANGAN/CACATAN
-
-`+ this.catatan +`
-`
 
 
         // pembuatan link
