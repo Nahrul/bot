@@ -77,7 +77,7 @@ pengukuran beban trafo`,
     //   this.kwhOffice = parseInt(this.kwh_office_sekarang) - parseInt(this.kwh_office_kemarin)
     // },
     created(){
-      this.link = localStorage.getItem('lik') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
+      this.link = localStorage.getItem('link') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
       this.petugas = JSON.parse(localStorage.getItem('nama')) || []
       this.fire_alarm = localStorage.getItem('fire alarm') || 'Aktif'
       this.pompa_jokie = localStorage.getItem('pompa jokie') || 'Stand+by+Auto'
@@ -143,8 +143,8 @@ pengukuran beban trafo`,
         var copyText = document.getElementById("copyText");
         copyText.select();
         // copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        // document.execCommand("copy")
+        // navigator.clipboard.writeText(copyText.value);
+        document.execCommand("copy")
         alert('copy to clipboard!')
       },
       laporan(){
