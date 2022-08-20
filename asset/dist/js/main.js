@@ -77,7 +77,7 @@ pengukuran beban trafo`,
     //   this.kwhOffice = parseInt(this.kwh_office_sekarang) - parseInt(this.kwh_office_kemarin)
     // },
     created(){
-      this.link = localStorage.getItem('lik') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
+      this.link = localStorage.getItem('link') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
       this.petugas = JSON.parse(localStorage.getItem('nama')) || []
       this.fire_alarm = localStorage.getItem('fire alarm') || 'Aktif'
       this.pompa_jokie = localStorage.getItem('pompa jokie') || 'Stand+by+Auto'
@@ -93,7 +93,8 @@ pengukuran beban trafo`,
       this.status_coldroom2 = localStorage.getItem('cr 2') || 'ON'
       this.status_coldroom3 = localStorage.getItem('cr 3') || 'ON'
       this.area_cctv = localStorage.getItem('area cctv') || `•  CCTV Office 45CH   :  ON
-        •  CCTV Recruit  8CH:  ON%0A•  CCTV Collect 24CH :+ON
+        •  CCTV Recruit  8CH:  ON
+        •  CCTV Collect 24CH : ON
         •  CCTV TC 11CH   : ON
         •  CCTV DC 216CH  : ON
         •  CCTV DC PRS 19CH :  ON
@@ -135,10 +136,32 @@ pengukuran beban trafo`,
         this.flowOffice = parseInt(this.flow_office_sekarang) - parseInt(this.flow_office_kemarin)
         this.flowBmt = parseInt(this.flow_bmt_sekarang) - parseInt(this.flow_bmt_kemarin)
         this.flowTc = parseInt(this.flow_tc_sekarang) - parseInt(this.flow_tc_kemarin)
+        this.pemeliharaan = `pengecekan suhu chiller
+pengukuran beban trafo
+pengecekan kwh all trafo
+pengecekan flow meter air`
+      }else{
+        this.pemeliharaan = `pengecekan suhu chiller
+pengukuran beban trafo`
       }
       
     },
     methods:{
+      pindah(){
+        this.kwh_office_kemarin = this.kwh_office_sekarang
+        this.kwh_office_sekarang = ''
+        this.kwh_dc_kemarin = this.kwh_dc_sekarang
+        this.kwh_dc_sekarang = ''
+        this.kwh_tc_kemarin = this.kwh_tc_sekarang
+        this.kwh_tc_sekarang = ''
+        this.flow_office_kemarin = this.flow_office_sekarang
+        this.flow_office_sekarang = ''
+        this.flow_tc_kemarin = this.flow_tc_sekarang
+        this.flow_tc_sekarang = ''
+        this.flow_bmt_kemarin = this.flow_bmt_sekarang
+        this.flow_bmt_sekarang = ''
+
+      },
       copy() {
         var copyText = document.getElementById("copyText");
         copyText.select();
@@ -221,8 +244,24 @@ pengukuran beban trafo`,
         if(this.shift == "Shift 3"){
           day = days[d.getDay()-1];
         }
+        let pemeliharaan = this.pemeliharaan
+        if (this.pemeliharaan == 'nihil') {
+          pemeliharaan = ''
+        }
+        let perbaikan = this.perbaikan
+        if (this.perbaikan == 'nihil') {
+          perbaikan = ''
+        }
+        let permintaan = this.permintaan
+        if (this.permintaan == 'nihil') {
+          permintaan = ''
+        }
+        let kejadian = this.kejadian
+        if (this.kejadian == 'nihil') {
+          kejadian = ''
+        }
         this.laporan_wa = `
-        LAPORAN HARIAN BMT `+ this.shift +`
+        LAPORAN HARIAN BMT `+ this.shift.toUpperCase() +`
 
 Unit :IDM Cab. Cirebon
 Hari/tgl : `+ day +`, `+ tanggal1 +` `+ month +` `+ this.tahun +`
@@ -261,22 +300,22 @@ RN.`+ rntc +`   TN.`+ tntc +`     SN.`+ sntc +`  NG 1.5
 `+ this.area_cctv +`
 
 Total CCTV : `+ this.cctvOn +` Unit
-Total Rusak : `+ this.cctvOff +` unit
+Total Rusak : `+ this.cctvOff +` Unit
 
  PEMELIHARAAN & PERBAIKAN
  Preventif Asset : 
-`+ this.pemeliharaan +`
+`+ pemeliharaan +`
 
 
 PEK. PERBAIKAN
-`+ this.perbaikan +`
+`+ perbaikan +`
 
 PERMINTAAN PEKERJAAN & KOMPLAIN
-`+ this.permintaan +`
+`+ permintaan +`
 
 
 KEJADIAN/TEMUAN
-`+ this.kejadian +`
+`+ kejadian +`
 
 KETERANGAN/CACATAN
 

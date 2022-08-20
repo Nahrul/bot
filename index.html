@@ -225,6 +225,7 @@
               </div>
             </div>
             <!-- kwh -->
+            <button v-if="this.shift == 'Shift 3'" @click='pindah()' class="btn btn-success"><i class="fas fa-arrow-left"></i> switch</button>
             <h5 v-if="this.shift == 'Shift 3'">Kwh</h5>
             <div v-if="this.shift == 'Shift 3'"class="row">
               <h6>kwh office {{kwhOffice}}</h6>

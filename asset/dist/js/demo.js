@@ -14,7 +14,7 @@
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
       // eslint-disable-next-line no-alert
-      alert('Selamat Datang di program BOT BMT, ini masih versi BETA ya jika ada kesalahan silahkan hubungi developer!')
+      alert('UPDATE! untuk shift 3 perubahan kwh kemarin dan sekarang tinggal di click tombol switch agar berpindah dari kwh sekarang ke kwh kemarin')
     }
   }, 1000)
 
