@@ -166,8 +166,8 @@ pengukuran beban trafo`
         var copyText = document.getElementById("copyText");
         copyText.select();
         // copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        // document.execCommand("copy")
+        // navigator.clipboard.writeText(copyText.value);
+        document.execCommand("copy")
         alert('copy to clipboard!')
       },
       laporan(){
