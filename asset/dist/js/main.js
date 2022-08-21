@@ -73,6 +73,15 @@ pengukuran beban trafo`,
 
       }
     },
+    watch: {
+      shift(){
+      if(this.shift == 'Shift 3'){
+        this.pemeliharaan += `
+pengecekan kwh all trafo
+pengecekan flow meter air`
+        }
+      }
+    },
     // mounted(){
     //   this.kwhOffice = parseInt(this.kwh_office_sekarang) - parseInt(this.kwh_office_kemarin)
     // },
@@ -136,13 +145,9 @@ pengukuran beban trafo`,
         this.flowOffice = parseInt(this.flow_office_sekarang) - parseInt(this.flow_office_kemarin)
         this.flowBmt = parseInt(this.flow_bmt_sekarang) - parseInt(this.flow_bmt_kemarin)
         this.flowTc = parseInt(this.flow_tc_sekarang) - parseInt(this.flow_tc_kemarin)
-        this.pemeliharaan = `pengecekan suhu chiller
-pengukuran beban trafo
-pengecekan kwh all trafo
-pengecekan flow meter air`
-      }else{
-        this.pemeliharaan = `pengecekan suhu chiller
-pengukuran beban trafo`
+//         this.pemeliharaan += `
+//         pengecekan kwh all trafo
+// pengecekan flow meter air`
       }
       
     },
@@ -238,12 +243,14 @@ pengukuran beban trafo`
         const months = ["January", "February", "Maret", "April", "Mei", "Juni", "July", "Agustus", "September", "Oktober", "November", "Desember"];
 
         const d = new Date();
+        console.log(d.getDay())
         let month = months[this.bulan - 1];
         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
         let day = days[d.getDay()];
         if(this.shift == "Shift 3"){
           day = days[d.getDay()-1];
         }
+        console.log(day)
         let pemeliharaan = this.pemeliharaan
         if (this.pemeliharaan == 'nihil') {
           pemeliharaan = ''
