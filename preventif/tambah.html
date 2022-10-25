@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  	<div class="container mt-5">
+  		<div class="row">
+  			<div class="col">
+  				<form name="submit-to-google-sheet">
+  				  	<div class="row mb-2">
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="Nama" aria-label="Nama" name="Nama">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="tanggal" aria-label="tanggal" name="tanggal">
+					  </div>
+					</div>
+					<div class="row mb-2">
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="jam" aria-label="jam" name="jam">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="pembersihan" aria-label="pembersihan" name="pembersihan">
+					  </div>
+					</div>
+					<div class="row mb-2">
+					  <div class="col-6">
+					    <input type="text" class="form-control" placeholder="pengecekan" aria-label="pengecekan" name="pengecekan">
+					  </div>
+					</div>
+					<div class="row mb-2">
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="RN" aria-label="RN" name="RN">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="SN" aria-label="SN" name="SN">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="TN" aria-label="TN" name="TN">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="RS" aria-label="pengecekan" name="RS">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="RT" aria-label="RT" name="RT">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="ST" aria-label="ST" name="ST">
+					  </div>
+					  <div class="col">
+					    <input type="text" class="form-control" placeholder="NG" aria-label="NG" name="NG">
+					  </div>
+					</div>
+					<button class="btn btn-primary" type="submit">SUBMIT</button>
+				</form>
+  			</div>
+  		</div>
+  	</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+	  const scriptURL = 'https://script.google.com/macros/s/AKfycbwfGeOPYpCiWmiTh5gzX2iVxscw2IoiFZpw_BMKuZ7xX-zej8-XELV3Zgqb3QRpTdyURQ/exec'
+	  const form = document.forms['submit-to-google-sheet']
+
+	  form.addEventListener('submit', e => {
+	    e.preventDefault()
+	    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+	      .then(response => console.log('Success!', response))
+	      .catch(error => console.error('Error!', error.message))
+	  })
+	</script>
+  </body>
+</html>
