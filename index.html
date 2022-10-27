@@ -101,11 +101,30 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Forms
+                laporan harian
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="preventif/tambah.html" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                laporan Preventif
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="preventif/index.html" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Data Preventif
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -686,9 +705,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0 
+      <b>Version</b> 2.0.0 
     </div>
-    <strong>Copyright &copy; 2022 <a href="https://nahrul.github.io/portfolio">Nahrul Hayat</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="https://nahrul.github.io/portfolio">nahdevl.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -796,13 +815,13 @@
     $('.duallistbox').bootstrapDualListbox()
 
     //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
+    // $('.my-colorpicker1').colorpicker()
+    // //color picker with addon
+    // $('.my-colorpicker2').colorpicker()
 
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    })
+    // $('.my-colorpicker2').on('colorpickerChange', function(event) {
+    //   $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    // })
 
     $("input[data-bootstrap-switch]").each(function(){
       $(this).bootstrapSwitch('state', $(this).prop('checked'));

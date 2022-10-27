@@ -6,24 +6,30 @@ async function getData() {
   const { sheets } = await result.json();
   const eventSheet = sheets[0];
   const data = eventSheet.data[0].rowData
-      .filter((_, index) => index !== 0 && index !== 1) // Mulai dari index 1 (menghindari nama kolom)
+      .filter((_, index) => index !== 0) // Mulai dari index 1 (menghindari nama kolom)
       .map(row => {
           const { values } = row;
+          console.log(row);
+          console.log(values[1].formattedValue);
           return {
               tanggalLaporan: values[0].formattedValue,
               nama: values[1].formattedValue,
               tanggal: values[2].formattedValue,
-              jam: values[3].formattedValue,
-              pembersihan: values[4].formattedValue,
-              pengecekan: values[5].formattedValue,
-              RN: values[6].formattedValue,
-              SN: values[7].formattedValue,
-              TN: values[8].formattedValue,
-              RS: values[9].formattedValue,
-              RT: values[10].formattedValue,
-              ST: values[11].formattedValue,
-              NG: values[12].formattedValue,
-
+              pembersihan: values[3].formattedValue,
+              pengecekan: values[4].formattedValue,
+              RN: values[5].formattedValue,
+              SN: values[6].formattedValue,
+              TN: values[7].formattedValue,
+              RS: values[8].formattedValue,
+              RT: values[9].formattedValue,
+              ST: values[10].formattedValue,
+              NG: values[11].formattedValue,
+              R: values[12].formattedValue,
+              S: values[13].formattedValue,
+              T: values[14].formattedValue,
+              suhu: values[15].formattedValue,
+              petugas: values[16].formattedValue,
+              catatan: values[17].formattedValue,
           }
       })
   return data;
@@ -37,7 +43,6 @@ function dataItemTemplate(item) {
       <td>${item.tanggalLaporan}</td>
       <td>${item.nama}</td>
       <td>${item.tanggal}</td>
-      <td>${item.jam}</td>
       <td>${item.pembersihan}</td>
       <td>${item.pengecekan}</td>
       <td>${item.RN}</td>
@@ -47,6 +52,13 @@ function dataItemTemplate(item) {
       <td>${item.RT}</td>
       <td>${item.ST}</td>
       <td>${item.NG}</td>
+      <td>${item.R}</td>
+      <td>${item.S}</td>
+      <td>${item.T}</td>
+      <td>${item.suhu}</td>
+      <td>${item.petugas}</td>
+      <td>${item.catatan}</td>
+
     </tr>`
   )
 }
@@ -58,6 +70,7 @@ async function renderData() {
     wrapperDOM.innerHTML = data.map(item => dataItemTemplate(item)).join('');
   } catch (error) {
     wrapperDOM.innerHTML = error
+    console.log(error);
   }
 }
 
