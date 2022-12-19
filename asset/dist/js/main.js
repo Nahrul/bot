@@ -92,9 +92,9 @@ pengecekan flow meter air`
       this.link = localStorage.getItem('link') || 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url'
       this.petugas = JSON.parse(localStorage.getItem('nama')) || []
       this.fire_alarm = localStorage.getItem('fire alarm') || 'Aktif'
-      this.pompa_jokie = localStorage.getItem('pompa jokie') || 'Stand+by+Auto'
+      this.pompa_jokie = localStorage.getItem('pompa jokie') || 'Stand by Auto'
       this.pompa_diesel = localStorage.getItem('pompa diesel') || 'Nihil'
-      this.electrical_fire_pump = localStorage.getItem('electrical fire pump') || 'Stand+by+Auto'
+      this.electrical_fire_pump = localStorage.getItem('electrical fire pump') || 'Stand by Auto'
       this.jumlah_pompa = localStorage.getItem('jumlah pompa') || `Pompa air sumur office: 1 unit (normal)
         Pompa transfer office dan dc: 2 unit (normal)
         Pompa sumur pos1 : 1 unit (normal)
@@ -685,7 +685,7 @@ KETERANGAN/CACATAN
         let electrical_fire_pump ="&entry.787116222="
         electrical_fire_pump += this.electrical_fire_pump
         electrical_fire_pump = electrical_fire_pump.replace(/ /g, "+")
-        let pompa_dorong = "&entry.1960544484=Stand+by+Auto"
+        // let pompa_dorong = "&entry.1960544484=Stand+by+Auto"
         let pompa_sumur = "&entry.216921219="
         pompa_sumur += this.pompa_sumur
         // let jumlah_pompa_sumur = "&entry.840879772=Pompa+air+sumur+office:+1+unit+(normal)%0APompa+transfer+office+dan+dc:+2+unit+(normal)%0APompa+sumur+pos1+:+1+unit+(normal)%0APompa+transfer+tc+:+1+unit+(normal)%0APompa+sumur+bmt+:+1+unit+(normal)"
