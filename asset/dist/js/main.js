@@ -440,6 +440,8 @@ KETERANGAN/CACATAN
         payload.append("entry.1811372098", "66")
         // kva pln 3
         payload.append("entry.1465374572", "60")
+        // kva pln catatan
+        payload.append("entry.1050631306", "")
         // status pln
         payload.append("entry.1503625449", "Normal")
         // unit trafo
@@ -489,7 +491,7 @@ KETERANGAN/CACATAN
         // electrical fire pump
         payload.append("entry.787116222", this.electrical_fire_pump)
         // pompa dorong
-        payload.append("entry.1960544484", "Stand by Auto")
+        // payload.append("entry.1960544484", "Stand by Auto")
         // pompa sumur
         payload.append("entry.216921219", this.pompa_sumur)
         // let jumlah_pompa_sumur 
@@ -528,15 +530,17 @@ KETERANGAN/CACATAN
 
           this.area_air = "Office : " + this.flowOffice + "\nTc : " + this.flowTc + "\nBmt : " + this.flowBmt
           total_air = parseInt(this.flowOffice) + parseInt(this.flowBmt) + parseInt(this.flowTc)
-        }
-        // total kwh
-        payload.append("entry.399026465", total_kwh)
-        // area kwh
-        payload.append("entry.29450866", this.area_kwh)
+          // total kwh
+          payload.append("entry.399026465", total_kwh)
+          // area kwh
+          payload.append("entry.29450866", this.area_kwh)
+          // flow meter
+          payload.append("entry.970325908", this.area_air)
+          payload.append("entry.1548278604", total_air)
 
-        // flow meter
-        payload.append("entry.970325908", this.area_air)
-        payload.append("entry.1548278604", total_air)
+        }
+        
+        
         // pemeliharaan dan preventiv aset ----------------------------------
         // pemelharaan
         payload.append("entry.1099436377", this.pemeliharaan)
@@ -557,12 +561,12 @@ KETERANGAN/CACATAN
         console.log(...payload);
         let text = "apakah anda yakin ingin kirim cepat?";
           if (confirm(text) == true){
-            fetch("https://docs.google.com/forms/d/e/1FAIpQLSe53YYJMsWodP1delgN2nRsgsNC61Wq-TOA4I4qi7p3MgUxbw/formResponse", {
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/formResponse", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
-              mode: 'no-cors',
+              // mode: 'no-cors',
               body: payload,
             })
             .then(response => {
