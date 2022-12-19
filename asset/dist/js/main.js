@@ -4,6 +4,8 @@
     data() {
       return {
         message: 'Hello Vue!',
+        opsi: 'Opsi 1',
+        apaBae:'naon wae lah',
         petugas: [],
         shift: '',
         tanggal: new Date().getDate(),
@@ -383,6 +385,28 @@ KETERANGAN/CACATAN
           }
 
 
+      },
+      testApi(){
+        const form = document.getElementById('form');
+        const payload = new FormData(form);
+        payload.append("entry.2116096575", "Opsi 3");
+        console.log(...payload);
+        let text = "apakah anda yakin ingin kirim cepat?";
+          if (confirm(text) == true){
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSe53YYJMsWodP1delgN2nRsgsNC61Wq-TOA4I4qi7p3MgUxbw/formResponse", {
+              method: "POST",
+              mode: 'no-cors',
+              body: payload,
+            })
+            .then(response => {
+              console.log(response);
+              alert('Berhasil dikirim')
+            })
+            .catch(err => {
+              alert('gagal dikirim!')
+              console.log(err)
+            })
+        }
       },
       console(){
         
