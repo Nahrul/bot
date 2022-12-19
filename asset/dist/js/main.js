@@ -50,10 +50,10 @@ pengukuran beban trafo`,
         link : 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url',
         linkWa : 'whatsapp://send?text=',
         fire_alarm : 'Aktif',
-        pompa_jokie : 'Stand+by+Auto',
+        pompa_jokie : 'Stand by Auto',
         pompa_diesel : 'Nihil',
         pompa_sumur : 'ON',
-        electrical_fire_pump : 'Stand+by+Auto',
+        electrical_fire_pump : 'Stand by Auto',
         jumlah_pompa: `Pompa air sumur office: 1 unit (normal)
         Pompa transfer office dan dc: 2 unit (normal)
         Pompa sumur pos1 : 1 unit (normal)
@@ -173,9 +173,10 @@ pengecekan flow meter air`
       copy() {
         var copyText = document.getElementById("copyText");
         copyText.select();
-        const test = this.laporan_wa.replace(/ /g, "%20").replace(/\n/g, "%0A")
+        const test = this.laporan_wa.replace(/ /g, "%20").replace(/\n/g, "%0A").replace(/&/g, "%26")
         this.linkWa += test;
         console.log(this.linkWa);
+        this.console.log(test)
         // copyText.setSelectionRange(0, 99999);
         // navigator.clipboard.writeText(copyText.value);
         document.execCommand("copy")
@@ -387,14 +388,180 @@ KETERANGAN/CACATAN
 
       },
       testApi(){
-        const form = document.getElementById('form');
-        const payload = new FormData(form);
-        payload.append("entry.2116096575", "Opsi 3");
+        // const form = document.getElementById('form');
+        const payload = new URLSearchParams();
+        const nama_entry = this.petugas.join(', ')
+        if (this.shift == "Shift 3") {
+          if (this.tanggal == 1){
+            let b = new Date().getMonth() -1
+            this.bulan = b + 1
+            this.tanggal = new Date(this.tahun, b + 1,0).getDate()
+          }else{
+            this.tanggal - 1
+          }
+        }else{
+          this.tanggal
+        }
+        // penentuan jam masuk dan keluar berdasarkan shift
+        let jam_masuk = ""
+        let jam_keluar = ""
+        if (this.shift == "Shift 1") {
+          jam_masuk = 07
+          jam_keluar = 15
+          console.log(jam_masuk)          
+        }else if(this.shift == "Shift 2") {
+          jam_masuk = 15
+          jam_keluar = 23
+        }else{
+          jam_masuk = 23
+          jam_keluar = 07
+        }
+
+        payload.append("entry.1136196154_day", this.tanggal)
+        // bulan
+        payload.append("entry.1136196154_month", this.bulan)
+        // zona
+        payload.append("entry.1737599555", "WIB")
+        // jam masuk
+        payload.append("entry.666255708_hour", jam_masuk)
+        // menit masuk
+        payload.append("entry.666255708_minute", "00")
+        // jam keluar
+        payload.append("entry.1320728560_hour", jam_keluar)
+        // menit keluar'
+        payload.append("entry.1320728560_minute", "00")
+        // shift
+        payload.append("entry.458820389", this.shift)
+        // cabang
+        payload.append("entry.11845914", "CIREBON")
+        // kva pln1
+        payload.append("entry.1425743504", "250")
+        // kva pln 2
+        payload.append("entry.1811372098", "66")
+        // kva pln 3
+        payload.append("entry.1465374572", "60")
+        // status pln
+        payload.append("entry.1503625449", "Normal")
+        // unit trafo
+        payload.append("entry.1623498328", "3 Unit")
+        // trafo 1
+        payload.append("entry.1644025321", "250")
+        // trafo 2
+        payload.append("entry.105937284", "66")
+        // trafo 3
+        payload.append("entry.124466718", "60")
+        // status trafo 1
+        payload.append("entry.1076685182", "OK")
+        // status trafo 2
+        payload.append("entry.1125670931", "OK")
+        // status trafo 3
+        payload.append("entry.1537648042", "OK")
+        // jumlah genset
+        payload.append("entry.836916224", "3 Unit")
+        // genset 1
+        payload.append("entry.34499611", "175")
+        // genset 2
+        payload.append("entry.680599205", "60")
+        // genset 3
+        payload.append("entry.1190301583", "60")
+        // status genset 1
+        payload.append("entry.1028900588", "Stand by Auto")
+        // status genset 2
+        payload.append("entry.1539680982", "Stand by Auto")
+        // status genset 3
+        payload.append("entry.2068862473", "Stand by Auto")
+        // jenis panel
+        payload.append("entry.955785228", "LVMDP")
+        // beban R
+        payload.append("entry.670855053", this.r)
+        // beban S
+        payload.append("entry.1819587166", this.s)
+        // beban t 
+        payload.append("entry.1021302425", this.t)
+        // beban n
+        payload.append("entry.1275826288", this.n)
+        // fire alarm
+        payload.append("entry.181359338", this.fire_alarm)
+        // pompa jokie
+        payload.append("entry.209873353", this.pompa_jokie)
+        // pompa diesel
+        payload.append("entry.926069726", this.pompa_diesel)
+        // electrical fire pump
+        payload.append("entry.787116222", this.electrical_fire_pump)
+        // pompa dorong
+        payload.append("entry.1960544484", "Stand by Auto")
+        // pompa sumur
+        payload.append("entry.216921219", this.pompa_sumur)
+        // let jumlah_pompa_sumur 
+        payload.append("entry.840879772", this.jumlah_pompa)
+        // area cctv
+        payload.append("entry.1033210631", this.area_cctv)
+        // cctv on
+        payload.append("entry.1450700688", this.cctvOn)
+        // cctv off
+        payload.append("entry.249967045", this.cctvOff)
+        // jumlah coldroom
+        payload.append("entry.1070854388", "3")
+        // suhu chiller 1
+        payload.append("entry.666490678", this.suhu1)
+        // preasure chiler 1
+        payload.append("entry.553580392", this.preasure1)
+        // suhu chiller 2
+        payload.append("entry.665166214", this.suhu2)
+        // preasure chiller 2
+        payload.append("entry.2052590279", this.preasure2)
+        // suhu chiller 3
+        payload.append("entry.2010845976", this.suhu3)
+        // preasure chiller 3
+        payload.append("entry.1394288064", this.preasure3)
+        // status all chiller
+        payload.append("entry.761107784", "ON")
+        payload.append("entry.277523632", "ON")
+        payload.append("entry.1088315514", "ON")
+
+        let total_kwh = ""
+        let total_air = ""
+
+        if(this.shift == "Shift 3"){
+          total_kwh = parseInt(this.kwhOffice) + parseInt(this.kwhDc) + parseInt(this.kwhTc)
+          this.area_kwh = "Office : " + this.kwhOffice + "\nDc : " + this.kwhDc + "\nTc : " + this.kwhTc
+
+          this.area_air = "Office : " + this.flowOffice + "\nTc : " + this.flowTc + "\nBmt : " + this.flowBmt
+          total_air = parseInt(this.flowOffice) + parseInt(this.flowBmt) + parseInt(this.flowTc)
+        }
+        // total kwh
+        payload.append("entry.399026465", total_kwh)
+        // area kwh
+        payload.append("entry.29450866", this.area_kwh)
+
+        // flow meter
+        payload.append("entry.970325908", this.area_air)
+        payload.append("entry.1548278604", total_air)
+        // pemeliharaan dan preventiv aset ----------------------------------
+        // pemelharaan
+        payload.append("entry.1099436377", this.pemeliharaan)
+        // perbaikan
+        payload.append("entry.740829364", this.perbaikan)
+        // permintaan
+        payload.append("entry.864780574", this.permintaan)
+        // kejadian
+        payload.append("entry.640345927", this.kejadian)
+        // catatan
+        payload.append("entry.369035004", this.catatan)
+        // regional
+        payload.append("entry.1251386738", "ASY");
+        // nama
+        payload.append("entry.1386643190", nama_entry);
+        // tahun
+        payload.append("entry.1136196154_year", this.tahun);
         console.log(...payload);
         let text = "apakah anda yakin ingin kirim cepat?";
           if (confirm(text) == true){
             fetch("https://docs.google.com/forms/d/e/1FAIpQLSe53YYJMsWodP1delgN2nRsgsNC61Wq-TOA4I4qi7p3MgUxbw/formResponse", {
               method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
               mode: 'no-cors',
               body: payload,
             })
@@ -512,10 +679,12 @@ KETERANGAN/CACATAN
         fire_alarm += this.fire_alarm
         let pompa_jokie = "&entry.209873353="
         pompa_jokie += this.pompa_jokie
+        pompa_jokie = pompa_jokie.replace(/ /g, "+")
         let pompa_diesel = "&entry.926069726="
         pompa_diesel += this.pompa_diesel
         let electrical_fire_pump ="&entry.787116222="
         electrical_fire_pump += this.electrical_fire_pump
+        electrical_fire_pump = electrical_fire_pump.replace(/ /g, "+")
         let pompa_dorong = "&entry.1960544484=Stand+by+Auto"
         let pompa_sumur = "&entry.216921219="
         pompa_sumur += this.pompa_sumur
