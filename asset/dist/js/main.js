@@ -46,6 +46,7 @@ pengukuran beban trafo`,
         kejadian:'nihil',
         catatan:'Operasional Normal',
         link : 'https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/viewform?usp=send_form?usp=pp_url',
+        linkWa : 'whatsapp://send?text=',
         fire_alarm : 'Aktif',
         pompa_jokie : 'Stand+by+Auto',
         pompa_diesel : 'Nihil',
@@ -170,6 +171,9 @@ pengecekan flow meter air`
       copy() {
         var copyText = document.getElementById("copyText");
         copyText.select();
+        const test = this.laporan_wa.replace(/ /g, "%20").replace(/\n/g, "%0A")
+        this.linkWa += test;
+        console.log(this.linkWa);
         // copyText.setSelectionRange(0, 99999);
         // navigator.clipboard.writeText(copyText.value);
         document.execCommand("copy")
