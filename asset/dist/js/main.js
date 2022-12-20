@@ -390,6 +390,12 @@ KETERANGAN/CACATAN
       testApi(){
         // const form = document.getElementById('form');
         const payload = new URLSearchParams();
+        // payload.append("entry.2116096575", "Opsi 1")
+        // payload.append("entry.93110621", "cek")
+        // payload.append("entry.1368469387", "cek")
+        // payload.append("entry.611780373", "cek")
+        // payload.append("entry.711661159", "psi 3")
+        // payload.append("pageHistory", "0,1,2")
         const nama_entry = this.petugas.join(', ')
         if (this.shift == "Shift 3") {
           if (this.tanggal == 1){
@@ -558,15 +564,18 @@ KETERANGAN/CACATAN
         payload.append("entry.1386643190", nama_entry);
         // tahun
         payload.append("entry.1136196154_year", this.tahun);
+        // page history sesuai jumlah page
+        payload.append("pageHistory", "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18")
         console.log(...payload);
         let text = "apakah anda yakin ingin kirim cepat?";
           if (confirm(text) == true){
-            fetch("https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/formResponse", {
+            // fetch("https://docs.google.com/forms/d/e/1FAIpQLSe53YYJMsWodP1delgN2nRsgsNC61Wq-TOA4I4qi7p3MgUxbw/formResponse", { //ini link contoh
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/formResponse", { //ini link laporan bmt asli
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
-              // mode: 'no-cors',
+              mode: 'no-cors',
               body: payload,
             })
             .then(response => {
