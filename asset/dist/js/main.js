@@ -566,8 +566,16 @@ KETERANGAN/CACATAN
         payload.append("entry.1136196154_year", this.tahun);
         // page history sesuai jumlah page
         payload.append("pageHistory", "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18")
-        console.log(...payload);
+        // console.log(payload.getAll());
+        
         let text = "apakah anda yakin ingin kirim cepat?";
+        for (const value of payload.values()) {
+          console.log(value);
+          if(value != "OK" || value != "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"){
+            text += '='
+            text += value
+          }
+        }
           if (confirm(text) == true){
             // fetch("https://docs.google.com/forms/d/e/1FAIpQLSe53YYJMsWodP1delgN2nRsgsNC61Wq-TOA4I4qi7p3MgUxbw/formResponse", { //ini link contoh
             fetch("https://docs.google.com/forms/d/e/1FAIpQLSeO8MGqhJs-o6aquLifhodZMUEeHoiXe25ZhD_nKBcYajCRAg/formResponse", { //ini link laporan bmt asli
