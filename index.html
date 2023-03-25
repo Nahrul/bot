@@ -385,6 +385,15 @@
                 <input type="text" v-model="preasure3"  class="form-control" placeholder="3">
               </div>
             </div>
+            <h5>kapasitas solar</h5>
+            <label for="office" class="form-label">Solar Office</label><br>
+            <input style="width:60%;" type="number" v-model="rangeOffice" class="form-control" id="office" min="0" max="100"><br>
+            <input type="range" v-model="rangeOffice" class="form-range" min="0" max="100" id="office" step="1"> 
+            {{rangeOffice}}% <br>
+            <label for="Dc" class="form-label">Solar Dc</label><br>
+            <input style="width:60%;" type="number" v-model="rangeDc" class="form-control" id="Dc" min="0" max="100"><br>
+            <input type="range" v-model="rangeDc" class="form-range" min="0" max="100" id="Dc" step="1"> 
+            {{rangeDc}}% <br>
           </div>
           <!-- /.card-body -->
         </div>

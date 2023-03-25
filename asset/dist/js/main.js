@@ -36,13 +36,18 @@
         suhu1:'',
         suhu2:'',
         suhu3:'',
+        rangeOffice: null,
+        rangeDc: null,
+        solarOffice: null,
+        solarDc: null,
         preasure1: '',
         preasure2: '',
         preasure3: '',
         cctvOn: '327',
         cctvOff: '0',
         pemeliharaan:`pengecekan suhu chiller
-pengukuran beban trafo`,
+pengukuran beban trafo
+pengecekan solar`,
         perbaikan:'nihil',
         permintaan:'nihil',
         kejadian:'nihil',
@@ -60,11 +65,12 @@ pengukuran beban trafo`,
         Pompa transfer tc : 1 unit (normal)
         Pompa sumur bmt : 1 unit (normal)`,
         area_cctv : `•  CCTV Office 45CH   :  ON
-        •  CCTV Recruit  8CH:  ON%0A•  CCTV Collect 24CH :+ON
+        •  CCTV Recruit  8CH:  ON
+        •  CCTV Collect 24CH : ON
         •  CCTV TC 11CH   : ON
         •  CCTV DC 216CH  : ON
         •  CCTV DC PRS 19CH :  ON
-        •  CCTV Posko 4CH    : ONC`,
+        •  CCTV Posko 4CH    : ON`,
         area_air : '',
         area_kwh : '',
         status_coldroom1 : 'ON',
@@ -81,8 +87,23 @@ pengukuran beban trafo`,
       if(this.shift == 'Shift 3'){
         this.pemeliharaan += `
 pengecekan kwh all trafo
-pengecekan flow meter air`
+pengecekan flow meter air
+pengecekan rollingdoor`
         }
+      },
+      rangeOffice(){
+        //solar office
+        const office = this.rangeOffice / 100;
+        const hasil = office * 3000;
+        this.solarOffice = Math.round(hasil);
+        console.log(this.solarOffice);
+      },
+      rangeDc(){
+        //solar dc
+        const dc = this.rangeDc / 100;
+        const hasildc = dc * 120;
+        this.solarDc = Math.round(hasildc);
+        console.log(this.solarDc);
       }
     },
     // mounted(){
@@ -105,12 +126,12 @@ pengecekan flow meter air`
       this.status_coldroom2 = localStorage.getItem('cr 2') || 'ON'
       this.status_coldroom3 = localStorage.getItem('cr 3') || 'ON'
       this.area_cctv = localStorage.getItem('area cctv') || `•  CCTV Office 45CH   :  ON
-        •  CCTV Recruit  8CH:  ON
-        •  CCTV Collect 24CH : ON
-        •  CCTV TC 11CH   : ON
-        •  CCTV DC 216CH  : ON
-        •  CCTV DC PRS 19CH :  ON
-        •  CCTV Posko 4CH    : ONC`
+      •  CCTV Recruit  8CH:  ON
+      •  CCTV Collect 24CH : ON
+      •  CCTV TC 11CH   : ON
+      •  CCTV DC 216CH  : ON
+      •  CCTV DC PRS 19CH :  ON
+      •  CCTV Posko 4CH    : ON`
       this.cctvOn = localStorage.getItem('cctvOn') || '327'
       this.cctvOff = localStorage.getItem('cctvOff') || '0'
       this.kwh_office_kemarin =localStorage.getItem('kwh office kemarin')
@@ -125,6 +146,10 @@ pengecekan flow meter air`
       this.flow_office_sekarang =localStorage.getItem('flow office sekarang')
       this.flow_bmt_sekarang =localStorage.getItem('flow bmt sekarang')
       this.flow_tc_sekarang =localStorage.getItem('flow tc sekarang')
+      this.rangeOffice =localStorage.getItem('range office')
+      this.rangeDc =localStorage.getItem('range dc')
+
+
 
     },
     updated(){
@@ -140,6 +165,9 @@ pengecekan flow meter air`
       localStorage.setItem('flow office sekarang', this.flow_office_sekarang)
       localStorage.setItem('flow bmt sekarang', this.flow_bmt_sekarang)
       localStorage.setItem('flow tc sekarang', this.flow_tc_sekarang)
+      localStorage.setItem('range office', this.rangeOffice)
+      localStorage.setItem('range dc', this.rangeDc)
+
       if(this.shift == 'Shift 3'){
         this.kwhOffice = parseInt(this.kwh_office_sekarang) - parseInt(this.kwh_office_kemarin)
         this.kwhDc = parseInt(this.kwh_dc_sekarang) - parseInt(this.kwh_dc_kemarin)
@@ -255,7 +283,11 @@ pengecekan flow meter air`
         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
         let day = days[d.getDay()];
         if(this.shift == "Shift 3"){
-          day = days[d.getDay()-1];
+          if (d.getDay() == 0) {
+            day = days[d.getDay()+6];
+          }else{
+            day = days[d.getDay()-1];            
+          }
         }
         console.log(day)
         let pemeliharaan = this.pemeliharaan
@@ -303,6 +335,8 @@ RN.`+ rntc +`   TN.`+ tntc +`     SN.`+ sntc +`  NG 1.5
 • Genset 160 kVA : Stand By Automatic
 • Genset 60 kVA : Stand By Automatic
 • Genset 60 kVA : Stand By Automatic
+• Tangki solar Office : `+ this.rangeOffice +`% ( `+ this.solarOffice +`L )
+• Tangki solar DC : `+ this.rangeDc +`% ( `+ this.solarDc +`L )
 • Pompa Dorong : 2 Unit Auto
 • Pompa Sumur : 1 Unit Auto 
 • Chiller Cold Room : 3 Unit ON
