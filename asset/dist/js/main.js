@@ -40,6 +40,7 @@
         rangeDc: null,
         solarOffice: null,
         solarDc: null,
+        pemakaian: null,
         preasure1: '',
         preasure2: '',
         preasure3: '',
@@ -102,8 +103,17 @@ pengecekan rollingdoor`
         //solar dc
         const dc = this.rangeDc / 100;
         const hasildc = dc * 120;
-        this.solarDc = Math.round(hasildc);
+        this.solarDc = hasildc.toFixed(1);
         console.log(this.solarDc);
+      },
+      solarOffice(){
+        const office = this.solarOffice / 3000 * 100;
+        console.log(office)
+        this.rangeOffice = office.toFixed(1);
+      },
+      solarDc(){
+        const hasilDc = this.solarDc / 120 * 100;
+        this.rangeDc = hasilDc.toFixed(1);
       }
     },
     // mounted(){
@@ -183,6 +193,12 @@ pengecekan rollingdoor`
       
     },
     methods:{
+      kurangi(){
+        const genset175 = 0.588 * this.pemakaian;
+        const genset60 = 0.2016 * this.pemakaian;
+        this.solarOffice -= Math.round(genset175 + genset60);
+        this.solarDc -= Math.round(genset60);
+      },
       pindah(){
         this.kwh_office_kemarin = this.kwh_office_sekarang
         this.kwh_office_sekarang = ''
